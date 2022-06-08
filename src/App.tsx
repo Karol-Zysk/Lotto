@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+//@ts-ignore
+import Random from "random-number-arrays";
+import "./App.css";
 
 function App() {
+  const [counter, setCounter] = useState<number>(0);
+
+  const arrayOptions = {
+    min: 1,
+    max: 49,
+    type: "array",
+    arraySize: 15,
+    unique: true,
+  };
+
+  //Creating Array of Random Unique Numbers
+  const createArrayHandler = () => {
+    const myArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const Arr: number[] = Random(arrayOptions);
+    const output = myArr.filter(function (obj) {
+      return Arr.indexOf(obj) !== -1;
+    });
+    if (output) {
+      console.log(output);
+      console.log(Arr);
+
+      setCounter(counter + 1);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={createArrayHandler}>Create Arr</button>
+      <h1>Counter: {counter}</h1>
     </div>
   );
 }
