@@ -13,16 +13,46 @@ type Options = {
 };
 
 function App() {
+  //setting initial random array options
+  const InitialArrOptions = {
+    min: 1,
+    max: 49,
+    type: "array",
+    arraySize: 6,
+    unique: true,
+  };
+
+  //random user Array to compare with
+  let innitialArray = Random(InitialArrOptions);
+
+  //User shots
+  const [hitOne, setHitOne] = useState<string>(innitialArray[0]);
+  const [hitTwo, setHitTwo] = useState<string>(innitialArray[1]);
+  const [hitThree, setHitThree] = useState<string>(innitialArray[2]);
+  const [hitFour, setHitFour] = useState<string>(innitialArray[3]);
+  const [hitFive, setHitFive] = useState<string>(innitialArray[4]);
+  const [hitSix, setHitSix] = useState<string>(innitialArray[5]);
+
+  const myArr = [
+    parseInt(hitOne),
+    parseInt(hitTwo),
+    parseInt(hitThree),
+    parseInt(hitFour),
+    parseInt(hitFive),
+    parseInt(hitSix),
+  ];
+
+  //number of wins state
   const [countThree, setCountThree] = useState<number>(0);
   const [countFour, setCountFour] = useState<number>(0);
   const [countFive, setCountFive] = useState<number>(0);
   const [countSix, setCountSix] = useState<number>(0);
-  const [arrayOptions, setArrayOptions] = useState<{}>({});
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [arrayOptions, setArrayOptions] = useState<{}>({} as Options);
 
-  const [howManyDraws, setHowManyDraws] = useState<number>(2);
+  const [howManyDraws, setHowManyDraws] = useState<string>("1");
 
   useEffect(() => {
+    //random arrays settings
     setArrayOptions({
       min: 1,
       max: 49,
@@ -33,24 +63,13 @@ function App() {
     });
   }, [howManyDraws]);
 
-  const setDrawsHandler = (event: { target: { value: any } }) => {
-    const value = event.target.value;
-    setHowManyDraws(value);
-    if (value === 10) {
-      console.log("pupu");
-    }
-  };
-
-  //random arrays settings
-
   const [addArrays, setAddArrays] = useState<number[][]>([]);
   const [drawNumber, setDrawNumber] = useState<number>(0);
+  const [val, setval] = useState<number>(0);
 
-  //user Array to compare with
-  const myArr = [1, 2, 3, 4, 5, 6];
-
-  //declare
-  let arraysOfHits = [];
+  //check for duplicates in custom Array
+  let findDuplicates = (arr: any) =>
+    arr.filter((item: number, index: number) => arr.indexOf(item) !== index);
 
   let NUMBER_OF_THREES = 0;
   let NUMBER_OF_FOURS = 0;
@@ -76,46 +95,108 @@ function App() {
   let allResults: number[][] = [];
 
   const CalculateResults = () => {
-    //Adding all results
-    allResults = [...Random(arrayOptions), ...addArrays];
-    setAddArrays(allResults);
+    if (howManyDraws === "" || howManyDraws === "0") {
+      console.log("set draws");
+      return;
+    } else {
+      //Adding all results
+      allResults = [...Random(arrayOptions), ...addArrays];
+      setAddArrays(allResults);
 
-    //Creating Array with hits
-    arraysOfHits = allResults.map((random) =>
-      random.filter(function (obj) {
-        return myArr.indexOf(obj) !== -1;
-      })
-    );
-    //check how many hits
-    arraysOfHits.map((hitArray) => {
-      if (hitArray.length === 3) {
-        NUMBER_OF_THREES++;
-      } else if (hitArray.length === 4) {
-        NUMBER_OF_FOURS++;
-      } else if (hitArray.length === 5) {
-        NUMBER_OF_FIVES++;
-      } else if (hitArray.length === 6) {
-        NUMBER_OF_SIXES++;
-      }
-    });
+      //Creating Array with hits
+      const arraysOfHits = allResults.map((random) =>
+        random.filter(function (obj) {
+          return myArr.indexOf(obj) !== -1;
+        })
+      );
 
-    setDrawNumber(allResults.length);
-    setWinningResults();
+      //check how many hits
+      arraysOfHits.map((hitArray) => {
+        if (hitArray.length === 3) {
+          NUMBER_OF_THREES++;
+        } else if (hitArray.length === 4) {
+          NUMBER_OF_FOURS++;
+        } else if (hitArray.length === 5) {
+          NUMBER_OF_FIVES++;
+          setval(allResults.length);
+          console.log(val);
+          console.log(hitArray.length, allResults[hitArray.length]);
+        } else if (hitArray.length === 6) {
+          NUMBER_OF_SIXES++;
+        }
+      });
+
+      setDrawNumber(allResults.length);
+      setWinningResults();
+    }
   };
 
   const handleCalculateResults = () => {
+    const duplicates = findDuplicates(myArr);
+    if (duplicates.length > 0) {
+      console.log("Conajmniej dwa pola mają ten sam numer");
+
+      return;
+    }
+
     CalculateResults();
   };
 
   return (
     <div className="App">
-      <input
-        value={howManyDraws}
-        min="1"
-        max="14000000"
-        type="number"
-        onChange={setDrawsHandler}
-      ></input>
+      <div>
+        <h2>Wpisz swoje numery</h2>
+
+        <input
+          value={hitOne}
+          min="1"
+          max="49"
+          type="number"
+          onChange={(e) => setHitOne(e.target.value || "")}
+        ></input>
+        <input
+          value={hitTwo}
+          min="1"
+          max="49"
+          type="number"
+          onChange={(e) => setHitTwo(e.target.value || "")}
+        ></input>
+        <input
+          value={hitThree}
+          min="1"
+          max="49"
+          type="number"
+          onChange={(e) => setHitThree(e.target.value || "")}
+        ></input>
+        <input
+          value={hitFour}
+          min="1"
+          max="49"
+          type="number"
+          onChange={(e) => setHitFour(e.target.value || "")}
+        ></input>
+        <input
+          value={hitFive}
+          min="1"
+          max="49"
+          type="number"
+          onChange={(e) => setHitFive(e.target.value || "")}
+        ></input>
+        <input
+          value={hitSix}
+          min="1"
+          max="49"
+          type="number"
+          onChange={(e) => setHitSix(e.target.value || "")}
+        ></input>
+        <input
+          value={howManyDraws ? howManyDraws : ""}
+          min="1"
+          max="14000000"
+          type="number"
+          onChange={(e) => setHowManyDraws(e.target.value || "")}
+        ></input>
+      </div>
       <button onClick={handleCalculateResults}>Create Arr</button>
       <h1>Liczba losowań: {drawNumber}</h1>
       <h1>trójki: {countThree}</h1>
@@ -123,7 +204,6 @@ function App() {
       <h1>piątki {countFive}</h1>
       <h1>szóstki {countSix}</h1>
       <button onClick={clearResults}>Clear</button>
-      {isLoading && <h1>Loading...</h1>}
     </div>
   );
 }
