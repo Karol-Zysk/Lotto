@@ -69,8 +69,11 @@ function App() {
 
   //check for duplicates in custom Array
   let findDuplicates = (arr: any) =>
-    arr.filter((item: number, index: number) => arr.indexOf(item) !== index);
-
+    arr
+      .filter((item: number, index: number) => arr.indexOf(item) !== index)
+      .filter(function (value: number) {
+        return !Number.isNaN(value);
+      });
   let NUMBER_OF_THREES = 0;
   let NUMBER_OF_FOURS = 0;
   let NUMBER_OF_FIVES = 0;
@@ -95,46 +98,44 @@ function App() {
   let allResults: number[][] = [];
 
   const CalculateResults = () => {
-    if (howManyDraws === "" || howManyDraws === "0") {
-      console.log("set draws");
-      return;
-    } else {
-      //Adding all results
-      allResults = [...Random(arrayOptions), ...addArrays];
-      setAddArrays(allResults);
+    //Adding all results
+    allResults = [...Random(arrayOptions), ...addArrays];
+    setAddArrays(allResults);
 
-      //Creating Array with hits
-      const arraysOfHits = allResults.map((random) =>
-        random.filter(function (obj) {
-          return myArr.indexOf(obj) !== -1;
-        })
-      );
+    //Creating Array with hits
+    const arraysOfHits = allResults.map((random) =>
+      random.filter(function (obj) {
+        return myArr.indexOf(obj) !== -1;
+      })
+    );
 
-      //check how many hits
-      arraysOfHits.map((hitArray) => {
-        if (hitArray.length === 3) {
-          NUMBER_OF_THREES++;
-        } else if (hitArray.length === 4) {
-          NUMBER_OF_FOURS++;
-        } else if (hitArray.length === 5) {
-          NUMBER_OF_FIVES++;
-          setval(allResults.length);
-          console.log(val);
-          console.log(hitArray.length, allResults[hitArray.length]);
-        } else if (hitArray.length === 6) {
-          NUMBER_OF_SIXES++;
-        }
-      });
+    //check how many hits
+    arraysOfHits.map((hitArray) => {
+      if (hitArray.length === 3) {
+        NUMBER_OF_THREES++;
+      } else if (hitArray.length === 4) {
+        NUMBER_OF_FOURS++;
+      } else if (hitArray.length === 5) {
+        NUMBER_OF_FIVES++;
+        setval(allResults.length);
+        console.log(val);
+        console.log(hitArray.length, allResults[hitArray.length]);
+      } else if (hitArray.length === 6) {
+        NUMBER_OF_SIXES++;
+      }
+    });
 
-      setDrawNumber(allResults.length);
-      setWinningResults();
-    }
+    setDrawNumber(allResults.length);
+    setWinningResults();
   };
 
   const handleCalculateResults = () => {
-    const duplicates = findDuplicates(myArr);
-    if (duplicates.length > 0) {
-      console.log("Conajmniej dwa pola mają ten sam numer");
+    const duplicates: number[] = findDuplicates(myArr);
+    if (howManyDraws === "" || howManyDraws === "0") {
+      console.log("Uzupełnij Pola", myArr.includes(NaN));
+      return;
+    } else if (duplicates.length > 0) {
+      console.log("Conajmniej dwa pola mają ten sam numer", duplicates.length);
 
       return;
     }
