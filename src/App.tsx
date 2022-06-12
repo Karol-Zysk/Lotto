@@ -50,6 +50,9 @@ function App() {
   const [arrayOptions, setArrayOptions] = useState<{}>({} as Options);
 
   const [howManyDraws, setHowManyDraws] = useState<string>("1");
+  const [arr3, setArr3] = useState<number[]>([]);
+  let arr2: number[] = [];
+  
 
   useEffect(() => {
     //random arrays settings
@@ -65,7 +68,6 @@ function App() {
 
   const [addArrays, setAddArrays] = useState<number[][]>([]);
   const [drawNumber, setDrawNumber] = useState<number>(0);
-  const [val, setval] = useState<number>(0);
 
   //check for duplicates in custom Array
   let findDuplicates = (arr: any) =>
@@ -100,7 +102,7 @@ function App() {
   const CalculateResults = () => {
     //Adding all results
     allResults = [...Random(arrayOptions), ...addArrays];
-    setAddArrays(allResults);
+    setAddArrays(Random(arrayOptions));
 
     //Creating Array with hits
     const arraysOfHits = allResults.map((random) =>
@@ -112,14 +114,15 @@ function App() {
     //check how many hits
     arraysOfHits.map((hitArray) => {
       if (hitArray.length === 3) {
+        
         NUMBER_OF_THREES++;
+        arr2 = [...arr3, NUMBER_OF_THREES];
+        setArr3(arr2);
+        console.log(arr2);
       } else if (hitArray.length === 4) {
         NUMBER_OF_FOURS++;
       } else if (hitArray.length === 5) {
         NUMBER_OF_FIVES++;
-        setval(allResults.length);
-        console.log(val);
-        console.log(hitArray.length, allResults[hitArray.length]);
       } else if (hitArray.length === 6) {
         NUMBER_OF_SIXES++;
       }
