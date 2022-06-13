@@ -1,16 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 //@ts-ignore
 import Random from "random-number-arrays";
 import "./App.css";
-
-type Options = {
-  min: number;
-  max: number;
-  type: string;
-  numberOfArrays: number;
-  arraySize: number;
-  unique: boolean;
-};
+import { findDuplicates } from "./utils/options";
 
 function App() {
   //setting initial random array options
@@ -33,6 +25,17 @@ function App() {
   const [hitFive, setHitFive] = useState<string>(innitialArray[4]);
   const [hitSix, setHitSix] = useState<string>(innitialArray[5]);
 
+  const [pupu, setPupu] = useState([
+    innitialArray[0],
+    innitialArray[1],
+    innitialArray[2],
+    innitialArray[3],
+    innitialArray[4],
+    innitialArray[5],
+  ]);
+
+  console.log(pupu);
+
   const myArr = [
     parseInt(hitOne),
     parseInt(hitTwo),
@@ -42,67 +45,42 @@ function App() {
     parseInt(hitSix),
   ];
 
-  //number of wins state
+  //number of wins state and draws
   const [countThree, setCountThree] = useState<number>(0);
   const [countFour, setCountFour] = useState<number>(0);
   const [countFive, setCountFive] = useState<number>(0);
   const [countSix, setCountSix] = useState<number>(0);
-  const [arrayOptions, setArrayOptions] = useState<{}>({} as Options);
+  const [countDraws, setCountDraws] = useState<number>(0);
+  const [errorMsg, setErrorMsg] = useState<string>("");
 
+  //user declares  number of draws
   const [howManyDraws, setHowManyDraws] = useState<string>("1");
-  const [arr3, setArr3] = useState<number[]>([]);
-  let arr2: number[] = [];
-  
 
-  useEffect(() => {
-    //random arrays settings
-    setArrayOptions({
-      min: 1,
-      max: 49,
-      type: "multi-array",
-      numberOfArrays: howManyDraws,
-      arraySize: 6,
-      unique: true,
-    });
-  }, [howManyDraws]);
+  let RandomDrawOptions = {
+    min: 1,
+    max: 49,
+    type: "multi-array",
+    numberOfArrays: howManyDraws,
+    arraySize: 6,
+    unique: true,
+  };
 
-  const [addArrays, setAddArrays] = useState<number[][]>([]);
-  const [drawNumber, setDrawNumber] = useState<number>(0);
-
-  //check for duplicates in custom Array
-  let findDuplicates = (arr: any) =>
-    arr
-      .filter((item: number, index: number) => arr.indexOf(item) !== index)
-      .filter(function (value: number) {
-        return !Number.isNaN(value);
-      });
   let NUMBER_OF_THREES = 0;
   let NUMBER_OF_FOURS = 0;
   let NUMBER_OF_FIVES = 0;
   let NUMBER_OF_SIXES = 0;
+  let NUMBER_OF_DRAWS = 0;
 
-  //setting wininning results
-  const setWinningResults = () => {
-    setCountThree(NUMBER_OF_THREES);
-    setCountFour(NUMBER_OF_FOURS);
-    setCountFive(NUMBER_OF_FIVES);
-    setCountSix(NUMBER_OF_SIXES);
-  };
-  //clearing Results
-  const clearResults = () => {
-    setCountThree(0);
-    setCountFour(0);
-    setCountFive(0);
-    setCountSix(0);
-    setAddArrays([]);
-    setDrawNumber(allResults.length);
-  };
+  let SUM_OF_THREES = 0;
+  let SUM_OF_FOURS = 0;
+  let SUM_OF_FIVES = 0;
+  let SUM_OF_SIXES = 0;
+
   let allResults: number[][] = [];
 
   const CalculateResults = () => {
-    //Adding all results
-    allResults = [...Random(arrayOptions), ...addArrays];
-    setAddArrays(Random(arrayOptions));
+    //Creating Array of Random Values
+    allResults = Random(RandomDrawOptions);
 
     //Creating Array with hits
     const arraysOfHits = allResults.map((random) =>
@@ -112,38 +90,61 @@ function App() {
     );
 
     //check how many hits
+    //SUM_OF.. summing hits from draws
     arraysOfHits.map((hitArray) => {
       if (hitArray.length === 3) {
-        
         NUMBER_OF_THREES++;
-        arr2 = [...arr3, NUMBER_OF_THREES];
-        setArr3(arr2);
-        console.log(arr2);
+        SUM_OF_THREES = countThree + NUMBER_OF_THREES;
+        setCountThree(SUM_OF_THREES);
       } else if (hitArray.length === 4) {
         NUMBER_OF_FOURS++;
+        SUM_OF_FOURS = countFour + NUMBER_OF_FOURS;
+        setCountFour(SUM_OF_FOURS);
       } else if (hitArray.length === 5) {
         NUMBER_OF_FIVES++;
+        SUM_OF_FIVES = countFive + NUMBER_OF_FIVES;
+        setCountFive(SUM_OF_FIVES);
       } else if (hitArray.length === 6) {
         NUMBER_OF_SIXES++;
+        SUM_OF_SIXES = countSix + NUMBER_OF_SIXES;
+        setCountSix(SUM_OF_SIXES);
       }
     });
 
-    setDrawNumber(allResults.length);
-    setWinningResults();
+    //setting number of draws
+    NUMBER_OF_DRAWS = countDraws + arraysOfHits.length;
+    setCountDraws(NUMBER_OF_DRAWS);
   };
 
   const handleCalculateResults = () => {
+    const valuesInRange_0_49 = myArr.some((arg) => arg < 0 || arg > 49);
     const duplicates: number[] = findDuplicates(myArr);
-    if (howManyDraws === "" || howManyDraws === "0") {
-      console.log("Uzupełnij Pola", myArr.includes(NaN));
+    if (
+      myArr.includes(NaN) ||
+      howManyDraws === "" ||
+      howManyDraws === "0" ||
+      howManyDraws === "-"
+    ) {
+      setErrorMsg("Uzupełnij Pola Liczbami");
+      return;
+    } else if (valuesInRange_0_49) {
+      setErrorMsg("Tylko liczby z zakresu 1-49");
       return;
     } else if (duplicates.length > 0) {
-      console.log("Conajmniej dwa pola mają ten sam numer", duplicates.length);
-
+      setErrorMsg("Conajmniej dwa pola mają ten sam numer");
       return;
     }
 
     CalculateResults();
+  };
+
+  //clearing Results
+  const clearResults = () => {
+    setCountThree(0);
+    setCountFour(0);
+    setCountFive(0);
+    setCountSix(0);
+    setCountDraws(0);
   };
 
   return (
@@ -152,7 +153,7 @@ function App() {
         <h2>Wpisz swoje numery</h2>
 
         <input
-          value={hitOne}
+          value={pupu[0]}
           min="1"
           max="49"
           type="number"
@@ -202,12 +203,13 @@ function App() {
         ></input>
       </div>
       <button onClick={handleCalculateResults}>Create Arr</button>
-      <h1>Liczba losowań: {drawNumber}</h1>
+      <h1>Liczba losowań: {countDraws}</h1>
       <h1>trójki: {countThree}</h1>
       <h1>czwórki {countFour}</h1>
       <h1>piątki {countFive}</h1>
       <h1>szóstki {countSix}</h1>
       <button onClick={clearResults}>Clear</button>
+      <h2 style={{ color: "red" }}>{errorMsg}</h2>
     </div>
   );
 }
