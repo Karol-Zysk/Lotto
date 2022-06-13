@@ -1,56 +1,29 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 //@ts-ignore
 import Random from "random-number-arrays";
 import "./App.css";
 import { findDuplicates } from "./utils/options";
+import { innitialArrayState, userHitsReducer } from "./utils/userArrayReducer";
+import { innitialWinState, WinsReducer } from "./utils/numberOfWinsReducer";
 
 function App() {
-  //setting initial random array options
-  const InitialArrOptions = {
-    min: 1,
-    max: 49,
-    type: "array",
-    arraySize: 6,
-    unique: true,
-  };
-
-  //random user Array to compare with
-  let innitialArray = Random(InitialArrOptions);
+  const [userHits, dispatch] = useReducer(userHitsReducer, innitialArrayState);
+  const [numberOfWins, dispatchWins] = useReducer(
+    WinsReducer,
+    innitialWinState
+  );
 
   //User shots
-  const [hitOne, setHitOne] = useState<string>(innitialArray[0]);
-  const [hitTwo, setHitTwo] = useState<string>(innitialArray[1]);
-  const [hitThree, setHitThree] = useState<string>(innitialArray[2]);
-  const [hitFour, setHitFour] = useState<string>(innitialArray[3]);
-  const [hitFive, setHitFive] = useState<string>(innitialArray[4]);
-  const [hitSix, setHitSix] = useState<string>(innitialArray[5]);
-
-  const [pupu, setPupu] = useState([
-    innitialArray[0],
-    innitialArray[1],
-    innitialArray[2],
-    innitialArray[3],
-    innitialArray[4],
-    innitialArray[5],
-  ]);
-
-  console.log(pupu);
-
-  const myArr = [
-    parseInt(hitOne),
-    parseInt(hitTwo),
-    parseInt(hitThree),
-    parseInt(hitFour),
-    parseInt(hitFive),
-    parseInt(hitSix),
+  const myArr: number[] = [
+    parseInt(userHits.hitOne),
+    parseInt(userHits.hitTwo),
+    parseInt(userHits.hitThree),
+    parseInt(userHits.hitFour),
+    parseInt(userHits.hitFive),
+    parseInt(userHits.hitSix),
   ];
 
-  //number of wins state and draws
-  const [countThree, setCountThree] = useState<number>(0);
-  const [countFour, setCountFour] = useState<number>(0);
-  const [countFive, setCountFive] = useState<number>(0);
-  const [countSix, setCountSix] = useState<number>(0);
-  const [countDraws, setCountDraws] = useState<number>(0);
+
   const [errorMsg, setErrorMsg] = useState<string>("");
 
   //user declares  number of draws
@@ -65,16 +38,6 @@ function App() {
     unique: true,
   };
 
-  let NUMBER_OF_THREES = 0;
-  let NUMBER_OF_FOURS = 0;
-  let NUMBER_OF_FIVES = 0;
-  let NUMBER_OF_SIXES = 0;
-  let NUMBER_OF_DRAWS = 0;
-
-  let SUM_OF_THREES = 0;
-  let SUM_OF_FOURS = 0;
-  let SUM_OF_FIVES = 0;
-  let SUM_OF_SIXES = 0;
 
   let allResults: number[][] = [];
 
@@ -90,30 +53,36 @@ function App() {
     );
 
     //check how many hits
-    //SUM_OF.. summing hits from draws
+    //summing hits from draws
     arraysOfHits.map((hitArray) => {
       if (hitArray.length === 3) {
-        NUMBER_OF_THREES++;
-        SUM_OF_THREES = countThree + NUMBER_OF_THREES;
-        setCountThree(SUM_OF_THREES);
+        dispatchWins({
+          type: "SET_THREES",
+          payload: 1,
+        });
       } else if (hitArray.length === 4) {
-        NUMBER_OF_FOURS++;
-        SUM_OF_FOURS = countFour + NUMBER_OF_FOURS;
-        setCountFour(SUM_OF_FOURS);
+        dispatchWins({
+          type: "SET_FOURS",
+          payload: 1,
+        });
       } else if (hitArray.length === 5) {
-        NUMBER_OF_FIVES++;
-        SUM_OF_FIVES = countFive + NUMBER_OF_FIVES;
-        setCountFive(SUM_OF_FIVES);
+        dispatchWins({
+          type: "SET_FIVES",
+          payload: 1,
+        });
       } else if (hitArray.length === 6) {
-        NUMBER_OF_SIXES++;
-        SUM_OF_SIXES = countSix + NUMBER_OF_SIXES;
-        setCountSix(SUM_OF_SIXES);
+        dispatchWins({
+          type: "SET_SIXES",
+          payload: 1,
+        });
       }
     });
 
     //setting number of draws
-    NUMBER_OF_DRAWS = countDraws + arraysOfHits.length;
-    setCountDraws(NUMBER_OF_DRAWS);
+    dispatchWins({
+      type: "SET_DRAWS",
+      payload: arraysOfHits.length,
+    });
   };
 
   const handleCalculateResults = () => {
@@ -140,11 +109,10 @@ function App() {
 
   //clearing Results
   const clearResults = () => {
-    setCountThree(0);
-    setCountFour(0);
-    setCountFive(0);
-    setCountSix(0);
-    setCountDraws(0);
+    dispatchWins({
+      type: "CLEAR_DRAWS",
+      payload: 0,
+    });
   };
 
   return (
@@ -153,61 +121,73 @@ function App() {
         <h2>Wpisz swoje numery</h2>
 
         <input
-          value={pupu[0]}
+          value={userHits.hitOne}
           min="1"
           max="49"
           type="number"
-          onChange={(e) => setHitOne(e.target.value || "")}
-        ></input>
+          onChange={(event) =>
+            dispatch({ type: "SET_HIT_ONE", payload: event.target.value })
+          }
+        />
         <input
-          value={hitTwo}
+          value={userHits.hitTwo}
           min="1"
           max="49"
           type="number"
-          onChange={(e) => setHitTwo(e.target.value || "")}
-        ></input>
+          onChange={(event) =>
+            dispatch({ type: "SET_HIT_TWO", payload: event.target.value })
+          }
+        />
         <input
-          value={hitThree}
+          value={userHits.hitThree}
           min="1"
           max="49"
           type="number"
-          onChange={(e) => setHitThree(e.target.value || "")}
-        ></input>
+          onChange={(event) =>
+            dispatch({ type: "SET_HIT_THREE", payload: event.target.value })
+          }
+        />
         <input
-          value={hitFour}
+          value={userHits.hitFour}
           min="1"
           max="49"
           type="number"
-          onChange={(e) => setHitFour(e.target.value || "")}
-        ></input>
+          onChange={(event) =>
+            dispatch({ type: "SET_HIT_FOUR", payload: event.target.value })
+          }
+        />
         <input
-          value={hitFive}
+          value={userHits.hitFive}
           min="1"
           max="49"
           type="number"
-          onChange={(e) => setHitFive(e.target.value || "")}
-        ></input>
+          onChange={(event) =>
+            dispatch({ type: "SET_HIT_FIVE", payload: event.target.value })
+          }
+        />
         <input
-          value={hitSix}
+          value={userHits.hitSix}
           min="1"
           max="49"
           type="number"
-          onChange={(e) => setHitSix(e.target.value || "")}
-        ></input>
+          onChange={(event) =>
+            dispatch({ type: "SET_HIT_SIX", payload: event.target.value })
+          }
+        />
         <input
           value={howManyDraws ? howManyDraws : ""}
           min="1"
-          max="14000000"
+          max="20000000"
           type="number"
           onChange={(e) => setHowManyDraws(e.target.value || "")}
-        ></input>
+        />
       </div>
       <button onClick={handleCalculateResults}>Create Arr</button>
-      <h1>Liczba losowań: {countDraws}</h1>
-      <h1>trójki: {countThree}</h1>
-      <h1>czwórki {countFour}</h1>
-      <h1>piątki {countFive}</h1>
-      <h1>szóstki {countSix}</h1>
+      <h1>Liczba losowań: {numberOfWins.draws}</h1>
+      <h1>trójki: {numberOfWins.threes}</h1>
+      <h1>czwórki {numberOfWins.fours}</h1>
+      <h1>piątki {numberOfWins.fives}</h1>
+      <h1>szóstki {numberOfWins.sixes}</h1>
       <button onClick={clearResults}>Clear</button>
       <h2 style={{ color: "red" }}>{errorMsg}</h2>
     </div>
