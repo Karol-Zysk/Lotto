@@ -1,4 +1,4 @@
-type WinsState = {
+export type WinsState = {
   threes: number;
   fours: number;
   fives: number;

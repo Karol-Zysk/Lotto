@@ -1,7 +1,7 @@
 //@ts-ignore
 import Random from "random-number-arrays";
 
-type IState = {
+export type IState = {
   hitOne: string;
   hitTwo: string;
   hitThree: string;
