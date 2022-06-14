@@ -9,7 +9,7 @@ import {
 import { innitialWinState, WinsReducer } from "../../utils/numberOfWinsReducer";
 import Inputs from "./Parts/Inputs";
 import Results from "./Parts/Results";
-import { Container, Wrapper } from "./Calculations.style";
+import { CalculationsTitle, Container, Wrapper } from "./Calculations.style";
 
 function Calculations() {
   const [userHits, dispatch] = useReducer(userHitsReducer, innitialArrayState);
@@ -56,7 +56,7 @@ function Calculations() {
     );
     //check how many hits
     //sum of hits from the draws
-    arraysOfHits.map((hitArray) => {
+    arraysOfHits.map((hitArray, index) => {
       if (hitArray.length === 3) {
         dispatchWins({
           type: "SET_THREES",
@@ -77,6 +77,14 @@ function Calculations() {
           type: "SET_SIXES",
           payload: 1,
         });
+
+        console.log(
+          `Gratulacje! Trafiłeś 6 w losowaniu nr ${
+            numberOfWins.draws + index
+          }, czwórki: ${numberOfWins.fours}`
+        );
+
+        return;
       }
     });
     //setting number of draws
@@ -118,11 +126,11 @@ function Calculations() {
       payload: 0,
     });
   };
-
+  //srednia suma wygranych 2022 5,6mln
   return (
     <Container>
-        <h1>Symulacja Losowania</h1>
-        <Wrapper>
+      <CalculationsTitle>Symulacja Losowania</CalculationsTitle>
+      <Wrapper>
         <Inputs
           howManyDraws={howManyDraws}
           setHowManyDraws={setHowManyDraws}
@@ -131,7 +139,7 @@ function Calculations() {
           handleCalculateResults={handleCalculateResults}
           errorMsg={errorMsg}
         />
-      <Results numberOfWins={numberOfWins} clearResults={clearResults} />
+        <Results numberOfWins={numberOfWins} clearResults={clearResults} />
       </Wrapper>
     </Container>
   );

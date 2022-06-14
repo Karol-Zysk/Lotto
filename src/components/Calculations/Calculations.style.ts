@@ -7,12 +7,20 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: blue;
+  color: rgba(255, 255, 255, 0.9);
+
   /* border: 1px solid red; */
   text-align: left;
 `;
 
+export const CalculationsTitle = styled.p`
+  font-size: 3rem;
+  margin-bottom: 1rem;
+`;
+
 export const Wrapper = styled.div`
-  width: 90%;
+  width: 70%;
   height: 80%;
   border: 1px solid blue;
   display: flex;
@@ -21,33 +29,43 @@ export const Wrapper = styled.div`
 export const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 60%;
   padding: 2rem;
   /* border: 1px solid red; */
 `;
 export const ResultsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 40%;
   padding: 2rem;
   padding-left: 4rem;
   /* border: 1px solid red; */
 `;
 
 export const InputsWrapper = styled.div`
-  width: 80%;
+  width: 60%;
   display: flex;
-  justify-self: center;
-  align-self: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+`;
+export const ResultsWrapper = styled.div`
+  margin-bottom: 2.5rem;
 `;
 
 export const Input = styled.input`
-  width: 2.5rem;
-  height: 2.5rem;
-  font-size: 1rem;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.2rem;
   text-align: center;
   border-radius: 8px;
+`;
+
+export const InputsText = styled.p`
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+`;
+export const TextWrapper = styled.div`
+  margin-bottom: 1.5rem;
 `;
 
 export const HitsWrapper = styled.div`
@@ -60,12 +78,12 @@ export const DrawWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  align-items: center;
+  width: 60%;
+  margin-bottom: 2.5rem;
 `;
 
 export const Button = styled.button`
-  width: 50%;
+  width: auto;
   border-radius: 15px;
   background-color: yellow;
   white-space: nowrap;
@@ -73,7 +91,7 @@ export const Button = styled.button`
   color: blue;
   font-size: 16px;
   outline: none;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
@@ -82,25 +100,22 @@ export const Button = styled.button`
     transition: all 0.2s ease-in-out;
     color: yellow;
     background-color: blue;
-    border: 2px solid white;
+    border: 3px solid white;
   }
 `;
 
 export const BtnErrorWrapper = styled.div`
-  width: 100%;
+  width: 70%;
   display: flex;
-  border: 1px solid red;
 `;
 export const BtnWrapper = styled.div`
-  width: 40%;
+  width: 100%;
   display: flex;
   justify-content: center;
-  border: 1px solid red;
 `;
 export const ErrorMsgWrapper = styled.div`
-  width: 60%;
+  width: 70%;
   display: flex;
-  border: 1px solid red;
 
   justify-content: center;
 `;
@@ -111,12 +126,17 @@ export const ErrorTxt = styled.p`
 `;
 
 export const Num = styled.span`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-left: 0.5rem;
+  font-weight: 400;
   font-family: "Orbitron", sans-serif;
 `;
 export const Result = styled.p`
   font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
   font-family: "Orbitron", sans-serif;
+`;
+
+export const Astrix = styled.p`
+  margin-top: auto;
 `;

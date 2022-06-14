@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { IState } from "../../../utils/userArrayReducer";
 import {
+  Astrix,
   BtnErrorWrapper,
   BtnWrapper,
   Button,
@@ -10,7 +11,9 @@ import {
   HitsWrapper,
   Input,
   InputsContainer,
+  InputsText,
   InputsWrapper,
+  TextWrapper,
 } from "../Calculations.style";
 
 type Props = {
@@ -36,10 +39,9 @@ const Inputs: React.FC<Props> = ({
   return (
     <InputsContainer>
       <HitsWrapper>
-        <div>
-          <h2>Wpisz 6 liczb z zakresu 1-49</h2>
-          <p>*w innym przypadku wykorzystane zostaną losowe liczby</p>
-        </div>
+        <TextWrapper>
+          <InputsText>1. Wpisz 6 liczb z zakresu 1-49*</InputsText>
+        </TextWrapper>
         <InputsWrapper>
           <Input
             value={userHits.hitOne}
@@ -98,9 +100,12 @@ const Inputs: React.FC<Props> = ({
         </InputsWrapper>
       </HitsWrapper>
       <DrawWrapper>
-        <h2>Ustaw ilość losowań</h2>
+        <TextWrapper>
+          <InputsText>2. Ustaw ilość losowań</InputsText>
+        </TextWrapper>
+
         <Input
-          style={{ width: "6.5rem" }}
+          style={{ width: "8.5rem", alignSelf: "center" }}
           value={howManyDraws ? howManyDraws : ""}
           min="1"
           max="20000000"
@@ -116,6 +121,7 @@ const Inputs: React.FC<Props> = ({
           <Button onClick={handleCalculateResults}>Losuj</Button>
         </BtnWrapper>
       </BtnErrorWrapper>
+      <Astrix>*w innym przypadku wykorzystane zostaną losowe liczby</Astrix>
     </InputsContainer>
   );
 };
