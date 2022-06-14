@@ -1,7 +1,12 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { IState } from "../../../utils/userArrayReducer";
 import {
+  BtnErrorWrapper,
+  BtnWrapper,
+  Button,
   DrawWrapper,
+  ErrorMsgWrapper,
+  ErrorTxt,
   HitsWrapper,
   Input,
   InputsContainer,
@@ -9,6 +14,7 @@ import {
 } from "../Calculations.style";
 
 type Props = {
+  errorMsg: string;
   howManyDraws: string;
   setHowManyDraws: Dispatch<SetStateAction<string>>;
   dispatch: React.Dispatch<{
@@ -25,6 +31,7 @@ const Inputs: React.FC<Props> = ({
   howManyDraws,
   userHits,
   handleCalculateResults,
+  errorMsg,
 }) => {
   return (
     <InputsContainer>
@@ -91,8 +98,9 @@ const Inputs: React.FC<Props> = ({
         </InputsWrapper>
       </HitsWrapper>
       <DrawWrapper>
-        <h1>Ilość Losowań</h1>
+        <h2>Ustaw ilość losowań</h2>
         <Input
+          style={{ width: "6.5rem" }}
           value={howManyDraws ? howManyDraws : ""}
           min="1"
           max="20000000"
@@ -100,7 +108,14 @@ const Inputs: React.FC<Props> = ({
           onChange={(e) => setHowManyDraws(e.target.value || "")}
         />
       </DrawWrapper>
-      <button onClick={handleCalculateResults}>Create Arr</button>
+      <BtnErrorWrapper>
+        <ErrorMsgWrapper>
+          <ErrorTxt>{errorMsg}</ErrorTxt>
+        </ErrorMsgWrapper>
+        <BtnWrapper>
+          <Button onClick={handleCalculateResults}>Losuj</Button>
+        </BtnWrapper>
+      </BtnErrorWrapper>
     </InputsContainer>
   );
 };

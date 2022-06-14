@@ -11,12 +11,12 @@ const Main = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <>
-      <Navbar toggle={toggle} />
-      <Sidebar isOpen={isOpen} toggle={toggle} />
-      <Intro />
+    // <>
+    //   <Navbar toggle={toggle} />
+    //   <Sidebar isOpen={isOpen} toggle={toggle} />
+    //   <Intro />
       <Calculations />
-    </>
+    // </>
   );
 };
 

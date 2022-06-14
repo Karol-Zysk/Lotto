@@ -1,7 +1,6 @@
 import React, { useReducer, useState } from "react";
 //@ts-ignore
 import Random from "random-number-arrays";
-import "../../App.css";
 import { findDuplicates } from "../../utils/options";
 import {
   innitialArrayState,
@@ -89,7 +88,8 @@ function Calculations() {
 
   //looking for errors before calculating results
   const handleCalculateResults = () => {
-    const valuesInRange_0_49 = myArr.some((arg) => arg < 0 || arg > 49);
+    const valuesInRange_0_49 = myArr.some((arg) => arg < 1 || arg > 49);
+
     const duplicates: number[] = findDuplicates(myArr);
     if (
       myArr.includes(NaN) ||
@@ -108,6 +108,7 @@ function Calculations() {
     }
 
     CalculateResults();
+    setErrorMsg("");
   };
 
   //clearing Results
@@ -120,21 +121,18 @@ function Calculations() {
 
   return (
     <Container>
-      <Wrapper>
         <h1>Symulacja Losowania</h1>
+        <Wrapper>
         <Inputs
           howManyDraws={howManyDraws}
           setHowManyDraws={setHowManyDraws}
           dispatch={dispatch}
           userHits={userHits}
           handleCalculateResults={handleCalculateResults}
+          errorMsg={errorMsg}
         />
+      <Results numberOfWins={numberOfWins} clearResults={clearResults} />
       </Wrapper>
-      <Results
-        numberOfWins={numberOfWins}
-        clearResults={clearResults}
-        errorMsg={errorMsg}
-      />
     </Container>
   );
 }
