@@ -1,15 +1,17 @@
-import React from "react";
-import "./App.css";
-import Calculations from "./components/Calculations/Calculations";
-import Intro from "./components/Intro/Intro";
 
-const App = () => {
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Main from "./pages/Main";
+// import Contact from "./components/Contact/Contact";
+
+function App() {
   return (
-    <div className="App">
-      <Intro/>
-      <Calculations />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/"  element={<Main />} />
+        {/* <Route path="/contact"  element={<Contact />} /> */}
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
