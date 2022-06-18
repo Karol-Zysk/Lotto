@@ -20,10 +20,36 @@ export const Wrapper = styled.div`
   display: flex;
 `;
 
-export const Expenses = styled.div`
+export const GainsAndLoses = styled.div`
+  width: 50%;
+  height: 100%;
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+`;
 
-`
+export const Assumptions = styled.div`
+  padding: 1rem;
+  margin-top: auto;
+  border: 1px solid blue;
+`;
+export const AssumptionsText = styled.p`
+  font-size: 0.7rem;
+`;
+export const AssumptionsTitle = styled.p`
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+`;
 
 export const HallOfFame = styled.div`
+  width: 50%;
+`;
+
+export const Title = styled.h2`
 
 `
+export const Text = styled.p`
+
+`
+

@@ -84,8 +84,9 @@ function Calculations() {
           }, czwórki: ${numberOfWins.fours}`
         );
 
-        return;
+        return 0;
       }
+      return 0;
     });
     //setting number of draws
     dispatchWins({
@@ -93,7 +94,7 @@ function Calculations() {
       payload: arraysOfHits.length,
     });
   };
-
+  
   //looking for errors before calculating results
   const handleCalculateResults = () => {
     const valuesInRange_0_49 = myArr.some((arg) => arg < 1 || arg > 49);
@@ -126,7 +127,7 @@ function Calculations() {
       payload: 0,
     });
   };
-  //srednia suma wygranych 2022 5,6mln
+
   return (
     <Container>
       <CalculationsTitle>Symulacja Losowania</CalculationsTitle>
