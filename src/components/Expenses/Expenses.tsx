@@ -1,40 +1,81 @@
-import React, { useReducer } from "react";
-import { innitialWinState, WinsReducer } from "../../utils/numberOfWinsReducer";
+import React, { useState } from "react";
+import { WinsState } from "../../utils/numberOfWinsReducer";
 import {
-  Assumptions,
-  AssumptionsText,
-  AssumptionsTitle,
+  BiggerText,
+  BigText,
+  ButtonBlue,
   Container,
   GainsAndLoses,
-  HallOfFame,
+  MoreText,
+  Shape,
+  Shape1,
   Text,
   Title,
   Wrapper,
 } from "./Expenses.style";
 
-const Expenses = () => {
-  const [numberOfWins, dispatchWins] = useReducer(
-    WinsReducer,
-    innitialWinState
-  );
-  
+type Props = {
+  numberOfWins: WinsState;
+};
 
-  console.log(numberOfWins.draws);
+const Expenses: React.FC<Props> = ({
+  numberOfWins: { draws, fives, fours, threes, sixes },
+}) => {
+  const [moreInfo, setMoreInfo] = useState<boolean>(false);
+
+  const threePay = threes * 24;
+  const fourPay = fours * 170;
+  const fivePay = fives * 5300;
+  const sixPay = sixes * 5600000;
+  const sumOfWins = threePay + fourPay + fivePay + sixPay;
+
+  const moneySpent = draws * 4;
+
+  const balance = sumOfWins - moneySpent;
+
   return (
-    <Container>
+    <Container id="expenses">
+      <Shape />
+      <Shape1 />
       <Wrapper>
         <GainsAndLoses>
-          <Title>Twoje wygrane:</Title>
-          <Text>trójki: </Text>
-          <Text>czwórki: </Text>
-          <Text>piątki: </Text>
-          <Text>szóstki: </Text>
-          <Text>suma: </Text>
-          <Title></Title>
-          <Text></Text>
-          <Title></Title>
-          <Text></Text>
-          <Assumptions>
+          <BigText>
+            {draws === 0 ? (
+              <>
+                <p>Zagraj i sprawdź</p>
+                <p>zyskasz czy stracisz?</p>{" "}
+              </>
+            ) : draws !== 0 && balance === 0 ? (
+              "wychodzisz na zero"
+            ) : balance < 0 ? (
+              `Straciłeś: ${Math.abs(balance)} zł`
+            ) : (
+              `Wow. Jesteś do przodu o: ${balance} zł`
+            )}
+          </BigText>
+          <ButtonBlue onClick={() => setMoreInfo(!moreInfo)}>
+            Więcej Informacji
+          </ButtonBlue>
+          <MoreText>
+            {moreInfo && (
+              <>
+                <div>
+                  <Title>Twoje wygrane:</Title>
+                  <Text>trójki: {threePay} zł </Text>
+                  <Text>czwórki: {fourPay} zł</Text>
+                  <Text>piątki: {fivePay} zł</Text>
+                  <Text>szóstki: {sixPay} zł</Text>
+                  <BiggerText>Suma wygranych: {sumOfWins} zł</BiggerText>
+                </div>
+                <div>
+                  <Title>Wydane pieniądze:</Title>
+                  <Text>{moneySpent} zł</Text>
+                </div>
+              </>
+            )}
+          </MoreText>
+
+          {/* <Assumptions>
             <AssumptionsTitle>Założenia</AssumptionsTitle>
             <AssumptionsText>Wygrana za trójkę to 24zł</AssumptionsText>
             <AssumptionsText>
@@ -46,9 +87,8 @@ const Expenses = () => {
             <AssumptionsText>
               Średnia wygrana za szóstkę z roku 2022 to 5.6mln zł
             </AssumptionsText>
-          </Assumptions>
+          </Assumptions> */}
         </GainsAndLoses>
-        <HallOfFame>b</HallOfFame>
       </Wrapper>
     </Container>
   );

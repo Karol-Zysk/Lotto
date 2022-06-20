@@ -1,7 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { IState } from "../../../utils/userArrayReducer";
 import {
-  Astrix,
   BtnErrorWrapper,
   BtnWrapper,
   Button,
@@ -40,7 +39,7 @@ const Inputs: React.FC<Props> = ({
     <InputsContainer>
       <HitsWrapper>
         <TextWrapper>
-          <InputsText>1. Wpisz 6 liczb z zakresu 1-49*</InputsText>
+          <InputsText>1. Wpisz 6 liczb z zakresu 1-49</InputsText>
         </TextWrapper>
         <InputsWrapper>
           <Input
@@ -121,7 +120,6 @@ const Inputs: React.FC<Props> = ({
           <Button onClick={handleCalculateResults}>Losuj</Button>
         </BtnWrapper>
       </BtnErrorWrapper>
-      <Astrix>*w innym przypadku wykorzystane zostaną losowe liczby</Astrix>
     </InputsContainer>
   );
 };

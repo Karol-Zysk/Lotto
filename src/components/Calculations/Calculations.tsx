@@ -9,7 +9,16 @@ import {
 import { innitialWinState, WinsReducer } from "../../utils/numberOfWinsReducer";
 import Inputs from "./Parts/Inputs";
 import Results from "./Parts/Results";
-import { CalculationsTitle, Container, Wrapper } from "./Calculations.style";
+import {
+  CalculationsTitle,
+  Container,
+  ResultsAndArrow,
+  Shape,
+  Shape1,
+  Wrapper,
+} from "./Calculations.style";
+import Expenses from "../Expenses/Expenses";
+import Arrow from "./Parts/Arrow";
 
 function Calculations() {
   const [userHits, dispatch] = useReducer(userHitsReducer, innitialArrayState);
@@ -94,7 +103,7 @@ function Calculations() {
       payload: arraysOfHits.length,
     });
   };
-  
+
   //looking for errors before calculating results
   const handleCalculateResults = () => {
     const valuesInRange_0_49 = myArr.some((arg) => arg < 1 || arg > 49);
@@ -129,20 +138,28 @@ function Calculations() {
   };
 
   return (
-    <Container>
-      <CalculationsTitle>Symulacja Losowania</CalculationsTitle>
-      <Wrapper>
-        <Inputs
-          howManyDraws={howManyDraws}
-          setHowManyDraws={setHowManyDraws}
-          dispatch={dispatch}
-          userHits={userHits}
-          handleCalculateResults={handleCalculateResults}
-          errorMsg={errorMsg}
-        />
-        <Results numberOfWins={numberOfWins} clearResults={clearResults} />
-      </Wrapper>
-    </Container>
+    <>
+      <Container>
+        <CalculationsTitle>Symulacja Losowania</CalculationsTitle>
+        <Wrapper>
+          <Inputs
+            howManyDraws={howManyDraws}
+            setHowManyDraws={setHowManyDraws}
+            dispatch={dispatch}
+            userHits={userHits}
+            handleCalculateResults={handleCalculateResults}
+            errorMsg={errorMsg}
+          />
+          <ResultsAndArrow>
+            <Results numberOfWins={numberOfWins} clearResults={clearResults} />
+          </ResultsAndArrow>
+        </Wrapper>
+        <Arrow />
+        <Shape1 />
+        <Shape />
+      </Container>
+      <Expenses numberOfWins={numberOfWins} />
+    </>
   );
 }
 

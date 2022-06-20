@@ -30,7 +30,7 @@ export const Container = styled.div`
   z-index: 1;
   width: 100%;
   padding: 0 24px;
-  max-width: 1100px;
+  max-width: 100%;
 `;
 
 export const Logo = styled(LinkRouter)`
@@ -39,8 +39,8 @@ export const Logo = styled(LinkRouter)`
   cursor: pointer;
   font-size: 1.6rem;
   display: flex;
+  text-align: center;
   align-items: center;
-  margin-left: 24px;
   font-weight: bold;
   text-decoration: none;
 `;
@@ -62,9 +62,11 @@ export const MobileIcon = styled.div`
 export const Menu = styled.ul`
   display: flex;
   align-items: center;
+  width: 70%;
+  font-weight: bold;
   list-style: none;
   text-align: center;
-  margin-right: -22px;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -72,6 +74,7 @@ export const Menu = styled.ul`
 
 export const Item = styled.li`
   height: 80px;
+  margin-right: 3vw;
 `;
 export const NavLink = styled(LinkScroll)`
   color: yellow;
@@ -79,7 +82,7 @@ export const NavLink = styled(LinkScroll)`
   align-items: center;
   text-decoration: none;
   padding: 0rem 1rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   cursor: pointer;
   height: 100%;
   transition: all 200ms ease-in-out;

@@ -52,21 +52,11 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
                 spy={true}
                 offset={-80}
               >
-                Podstawy
+                Informacje
               </NavLink>
             </Item>
 
-            <Item>
-              <NavLink
-                to="info"
-                smooth={true}
-                duration={500}
-                spy={true}
-                offset={-80}
-              >
-                Jak to działa
-              </NavLink>
-            </Item>
+            
             <Item>
               <NavLink
                 to="Calculator"

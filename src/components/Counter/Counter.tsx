@@ -1,5 +1,6 @@
 import { animate } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { Num } from "../Calculations/Calculations.style";
 
 function Counter({ from, to }: any) {
   const nodeRef = useRef() as React.MutableRefObject<HTMLParagraphElement>;
@@ -8,7 +9,7 @@ function Counter({ from, to }: any) {
     const node = nodeRef.current;
 
     const controls = animate(from, to, {
-      duration: 2,
+      duration: 3.5,
       ease: "easeOut",
       onUpdate(value: number) {
         node.textContent = value.toFixed();
@@ -18,6 +19,6 @@ function Counter({ from, to }: any) {
     return () => controls.stop();
   }, [from, to]);
 
-  return <span ref={nodeRef} />;
+  return <Num ref={nodeRef} />;
 }
 export default Counter;

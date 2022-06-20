@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useReducer, useState } from "react";
 import {
   CounterReducer,
@@ -8,9 +9,9 @@ import Counter from "../../Counter/Counter";
 import {
   BtnWrapper,
   Button,
-  Num,
   Result,
   ResultsContainer,
+  ResultsText,
   ResultsWrapper,
 } from "../Calculations.style";
 
@@ -61,35 +62,21 @@ const Results: React.FC<Props> = ({
   return (
     <ResultsContainer>
       <ResultsWrapper>
-        <Result style={{ fontSize: "1.5rem" }}>
-          Liczba losowań:{" "}
-          <Num>
-            <Counter from={fromDraw} to={draws} />
-          </Num>
+        <ResultsText>Wyniki</ResultsText>
+        <Result>
+          Liczba losowań: <Counter from={fromDraw} to={draws} />
         </Result>
-        <Result style={{ fontSize: "1.1rem" }}>
-          trójki:{" "}
-          <Num>
-            <Counter from={fromThree} to={threes} />
-          </Num>
+        <Result>
+          trójki: <Counter from={fromThree} to={threes} />
         </Result>
-        <Result style={{ fontSize: "1.2rem" }}>
-          czwórki:{" "}
-          <Num>
-            <Counter from={fromFour} to={fours} />
-          </Num>
+        <Result>
+          czwórki: <Counter from={fromFour} to={fours} />
         </Result>
-        <Result style={{ fontSize: "1.4rem" }}>
-          piątki:{" "}
-          <Num>
-            <Counter from={fromFive} to={fives} />
-          </Num>
+        <Result>
+          piątki: <Counter from={fromFive} to={fives} />
         </Result>
         <Result style={{ fontSize: "1.6rem" }}>
-          szóstki:{" "}
-          <Num>
-            <Counter from={fromSix} to={sixes} />
-          </Num>
+          szóstki: <Counter from={fromSix} to={sixes} />
         </Result>
       </ResultsWrapper>
       <BtnWrapper>
