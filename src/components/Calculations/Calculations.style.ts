@@ -3,8 +3,9 @@ import { CgArrowDownO } from "react-icons/cg";
 import { Link } from "react-scroll";
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+  max-height: auto;
   position: relative;
   justify-content: center;
   display: flex;
@@ -38,8 +39,9 @@ export const Shape = styled.div`
 `;
 
 export const CalculationsTitle = styled.p`
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
+  text-shadow: 2px 0px 2px black;
   font-weight: bold;
 `;
 
@@ -76,11 +78,9 @@ export const IconWrapper = styled.div`
   display: flex;
   flex-direction: column;
   color: white;
-  /* height: 100%; */
   width: 100%;
   padding-top: 3rem;
-  /* padding-bottom: 2rem; */
-  /* border: 1px solid red; */
+  text-shadow: 2px 0px 2px black;
 
   align-items: center;
   color: yellow;
@@ -111,6 +111,7 @@ export const InputsWrapper = styled.div`
 export const ResultsWrapper = styled.div`
   margin-bottom: 2.5rem;
   color: yellow;
+  text-shadow: 2px 0px 2px black;
 `;
 
 export const Input = styled.input`
@@ -122,11 +123,12 @@ export const Input = styled.input`
 `;
 
 export const InputsText = styled.p`
-  font-size: 2.2rem;
+  font-size: 2rem;
   margin-bottom: 0.5rem;
+  text-shadow: 2px 0px 2px black;
 `;
 export const ResultsText = styled.p`
-  font-size: 2.2rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
 `;
 export const TextWrapper = styled.div`
@@ -154,7 +156,7 @@ export const Button = styled.button`
   white-space: nowrap;
   padding: 10px 22px;
   color: blue;
-  font-size: 16px;
+  font-size: 1rem;
   outline: none;
   border: 3px solid transparent;
   cursor: pointer;
@@ -191,18 +193,18 @@ export const ErrorTxt = styled.p`
 `;
 
 export const ArrowText = styled.p`
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
 `;
 
 export const Num = styled.span`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-left: 0.5rem;
   font-weight: 400;
   font-family: "Orbitron", sans-serif;
 `;
 export const Result = styled.p`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin-bottom: 0.7rem;
 `;
 

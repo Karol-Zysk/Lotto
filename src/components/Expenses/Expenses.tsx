@@ -60,16 +60,16 @@ const Expenses: React.FC<Props> = ({
             {moreInfo && (
               <>
                 <div>
+                  <Title>Wydane pieniądze:</Title>
+                  <Text>{moneySpent} zł</Text>
+                </div>
+                <div>
                   <Title>Twoje wygrane:</Title>
                   <Text>trójki: {threePay} zł </Text>
                   <Text>czwórki: {fourPay} zł</Text>
                   <Text>piątki: {fivePay} zł</Text>
                   <Text>szóstki: {sixPay} zł</Text>
                   <BiggerText>Suma wygranych: {sumOfWins} zł</BiggerText>
-                </div>
-                <div>
-                  <Title>Wydane pieniądze:</Title>
-                  <Text>{moneySpent} zł</Text>
                 </div>
               </>
             )}

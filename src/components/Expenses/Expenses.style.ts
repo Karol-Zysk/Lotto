@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+  max-height: auto;
   padding: 2rem 0;
   display: flex;
   flex-direction: column;
@@ -13,6 +14,7 @@ export const Container = styled.div`
   justify-content: center;
   text-align: left;
   z-index: 0;
+  text-shadow: 2px 0px 1px white;
 `;
 
 export const Shape = styled.div`
@@ -40,6 +42,7 @@ export const Wrapper = styled.div`
   width: 70%;
   height: 80%;
   display: flex;
+  flex-direction: column;
 `;
 
 export const GainsAndLoses = styled.div`
@@ -64,19 +67,18 @@ export const AssumptionsTitle = styled.p`
   margin-bottom: 0.5rem;
 `;
 export const BigText = styled.div`
-  font-size: 4rem;
+  font-size: 3rem;
   width: 80%;
   font-weight: bold;
   text-align: center;
   margin-bottom: 2rem;
 `;
 export const MoreText = styled.div`
-  font-size: 1.1rem;
+  font-size: 1rem;
   width: 80%;
   justify-content: space-around;
   margin-bottom: 0.5rem;
   display: flex;
-  
 `;
 
 export const Title = styled.h2`
@@ -84,11 +86,10 @@ export const Title = styled.h2`
 `;
 export const Text = styled.p`
   margin-bottom: 0.5rem;
-  
 `;
 
 export const BiggerText = styled.p`
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
 `;
@@ -100,7 +101,7 @@ export const ButtonBlue = styled.button`
   white-space: nowrap;
   padding: 10px 22px;
   color: blue;
-  font-size: 16px;
+  font-size: 1rem;
   outline: none;
   border: 3px solid blue;
   cursor: pointer;

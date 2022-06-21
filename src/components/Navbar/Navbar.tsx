@@ -59,7 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
             
             <Item>
               <NavLink
-                to="Calculator"
+                to="calculator"
                 smooth={true}
                 duration={500}
                 spy={true}
@@ -70,7 +70,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
             </Item>
             <Item>
               <NavLink
-                to="Like"
+                to="like"
                 smooth={true}
                 duration={500}
                 spy={true}

@@ -8,6 +8,8 @@ type StyledProps = {
 
 export const Nav = styled.div<StyledProps>`
   background: ${({ scrollNav }) => (scrollNav ? "blue" : "transparent")};
+  border-bottom: ${({ scrollNav }) =>
+    scrollNav ? "3px solid white" : "3px solid transparent"};
   height: 80px;
   margin-top: -80px;
   display: flex;
@@ -43,6 +45,7 @@ export const Logo = styled(LinkRouter)`
   align-items: center;
   font-weight: bold;
   text-decoration: none;
+  text-shadow: 2px 0px 2px black;
 `;
 
 export const MobileIcon = styled.div`
@@ -60,6 +63,7 @@ export const MobileIcon = styled.div`
 `;
 
 export const Menu = styled.ul`
+  text-shadow: 2px 0px 2px black;
   display: flex;
   align-items: center;
   width: 70%;
@@ -103,21 +107,21 @@ export const NavBtn = styled.nav`
 
 export const BtnLink = styled(LinkRouter)`
   border-radius: 50px;
-  background-color: yellow;
+  background-color: blue;
   white-space: nowrap;
   padding: 10px 22px;
-  color: blue;
+  color: yellow;
   font-size: 16px;
   outline: none;
-  border: 2px solid transparent;
+  border: 3px solid yellow;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   font-weight: bold;
   &:hover {
     transition: all 0.2s ease-in-out;
-    color: white;
-    background-color: orange;
-    border: 2px solid white;
+    color: blue;
+    background-color: yellow;
+    border: 3px solid blue;
   }
 `;

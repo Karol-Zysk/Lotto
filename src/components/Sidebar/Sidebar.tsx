@@ -20,19 +20,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggle }) => {
       <Wraper>
         <Menu>
           <SidebarLink to="about" onClick={toggle}>
-            About
+            Informacje
           </SidebarLink>
 
-          <SidebarLink to="culture" onClick={toggle}>
-            Culture
+          <SidebarLink to="calculator" onClick={toggle}>
+            Kalkulator
           </SidebarLink>
 
-          <SidebarLink to="forest" onClick={toggle}>
-            Primeval Forest
-          </SidebarLink>
-
-          <SidebarLink to="discover" onClick={toggle}>
-            Discover
+          <SidebarLink to="like" onClick={toggle}>
+            Zostaw Łapkę
           </SidebarLink>
         </Menu>
         <BtnWrapper>

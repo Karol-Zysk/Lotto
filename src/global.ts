@@ -17,7 +17,10 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
   font-family: 'Orbitron', sans-serif;
-}   
+}  
+body{
+  font-size: 5px;
+} 
     
     `;
 

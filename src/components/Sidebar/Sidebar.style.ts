@@ -43,6 +43,7 @@ export const Menu = styled.ul`
   grid-template-columns: 1fr;
   grid-template-rows: repeat(6, 80px);
   text-align: center;
+  text-shadow: 2px 0px 2px black;
   @media screen and (max-width: 480px) {
     grid-template-rows: repeat(6, 60px);
   }
@@ -57,7 +58,8 @@ export const SidebarLink = styled(LinkScroll)`
   color: yellow;
   cursor: pointer;
   &:hover {
-    color: orange;
+    color: yellow;
+    transform: scale(1.1);
     transition: 0.2s ease-in-out;
   }
 `;
@@ -71,18 +73,19 @@ export const Btn = styled(LinkRouter)`
   border-radius: 50px;
   background: yellow;
   white-space: nowrap;
-  padding: 16px 64px;
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
   color: blue;
   outline: none;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   cursor: pointer;
   transition: all 0.2 ease-in-out;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
   &:hover {
     transition: all 0.2s ease-in-out;
     color: yellow;
     background: blue;
-    border: 2px solid #1a4710;
+    border: 3px solid white;
   }
 `;
