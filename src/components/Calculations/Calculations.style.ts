@@ -39,7 +39,7 @@ export const Shape = styled.div`
 `;
 
 export const CalculationsTitle = styled.p`
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   margin-bottom: 1rem;
   text-shadow: 2px 0px 2px black;
   font-weight: bold;
@@ -93,11 +93,11 @@ export const LinkRS = styled(Link)`
 `;
 export const ArrowIcon = styled(CgArrowDownO)`
   font-size: 3rem;
-  transition: 300ms ease-in-out;
+  transition: 100ms ease-in-out;
   cursor: pointer;
   margin-bottom: 1.2rem;
   &:hover {
-    transition: 300ms ease-in-out;
+    transition: 100ms ease-in-out;
     transform: scale(1.1);
   }
 `;
@@ -106,29 +106,29 @@ export const InputsWrapper = styled.div`
   width: 60%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.2rem;
 `;
 export const ResultsWrapper = styled.div`
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.2rem;
   color: yellow;
   text-shadow: 2px 0px 2px black;
 `;
 
 export const Input = styled.input`
-  width: 3rem;
-  height: 3rem;
-  font-size: 1.2rem;
+  width: 2.5rem;
+  height: 2.7rem;
+  font-size: 1.1rem;
   text-align: center;
   border-radius: 8px;
 `;
 
 export const InputsText = styled.p`
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 0.5rem;
   text-shadow: 2px 0px 2px black;
 `;
 export const ResultsText = styled.p`
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
 `;
 export const TextWrapper = styled.div`

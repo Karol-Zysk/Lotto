@@ -1,4 +1,5 @@
 import React from "react";
+import { ArrowType } from "../../../../type";
 import {
   LinkRS,
   ArrowIcon,
@@ -6,14 +7,14 @@ import {
   IconWrapper,
 } from "../Calculations.style";
 
-const Arrow = () => {
+const Arrow: React.FC<ArrowType> = ({ path, text }) => {
   return (
     <IconWrapper>
       <ArrowText>
-        <LinkRS to="expenses" smooth={true} duration={500}>
+        <LinkRS to={path} smooth={true} duration={500}>
           <ArrowIcon />
         </LinkRS>
-        Podsumowanie
+        {text}
       </ArrowText>
     </IconWrapper>
   );

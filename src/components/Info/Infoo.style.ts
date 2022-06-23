@@ -44,8 +44,8 @@ export const ContentWrapper = styled.div`
 `;
 
 export const Title = styled.p`
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
 `;
 
 export const Desc = styled.p`
@@ -57,12 +57,12 @@ export const Desc = styled.p`
 export const ImageWrapper = styled.div`
   width: 45%;
   justify-content: flex-end;
-  height: 70%;
+  height: 100%;
   display: flex;
   align-items: center;
 `;
 
 export const Image = styled.img`
-  margin-top: 3rem;
-  width: 70%;
+  /* margin-left: 4rem; */
+  width: 65%;
 `;

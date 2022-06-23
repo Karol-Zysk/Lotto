@@ -10,6 +10,7 @@ export const Nav = styled.div<StyledProps>`
   background: ${({ scrollNav }) => (scrollNav ? "blue" : "transparent")};
   border-bottom: ${({ scrollNav }) =>
     scrollNav ? "3px solid white" : "3px solid transparent"};
+    
   height: 80px;
   margin-top: -80px;
   display: flex;

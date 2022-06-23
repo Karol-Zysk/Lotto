@@ -139,7 +139,7 @@ function Calculations() {
 
   return (
     <>
-      <Container>
+      <Container id="calculator">
         <CalculationsTitle>Symulacja Losowania</CalculationsTitle>
         <Wrapper>
           <Inputs
@@ -154,7 +154,7 @@ function Calculations() {
             <Results numberOfWins={numberOfWins} clearResults={clearResults} />
           </ResultsAndArrow>
         </Wrapper>
-        <Arrow />
+        <Arrow path="expenses" text="Podsumowanie" />
         <Shape1 />
         <Shape />
       </Container>

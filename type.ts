@@ -5,3 +5,8 @@ export type SidebarProps = {
 export type NavbarProps = {
   toggle: () => void;
 };
+
+export type ArrowType = {
+  path: string;
+  text: string;
+};
