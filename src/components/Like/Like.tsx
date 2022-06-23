@@ -14,23 +14,45 @@ import {
   LikeTitle,
   BeerWrapper,
   Beer,
+  Flex,
 } from "./Like.style";
 
 const Like = () => {
   const [likeCounter, setLikeCounter] = useState<number>(0);
+  const [isLiked, setIsLiked] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const setLikes = async () => {
+    await axios
+      .get("http://localhost:4000/api/likes/62b373a3092b68073ff23f98")
+      .then((response) => {
+        setLikeCounter(response.data.count);
+        setIsLoading(false);
+      });
+  };
 
   useEffect(() => {
-    axios.get("http://localhost:4000/api/likes/").then((response) => {
-      setLikeCounter(response.data[1].count);
-    });
+    setIsLoading(true);
+    setLikes();
+    const voted = localStorage.getItem("liked");
+    if (voted) {
+      setIsLiked(true);
+    } else {
+      return;
+    }
   }, []);
 
   const likes = { count: likeCounter + 1 };
   const leavLike = async () => {
+    setIsLoading(true);
+
     await axios
       .put("http://localhost:4000/api/likes/62b373a3092b68073ff23f98", likes)
       .then((response) => {
+        localStorage.setItem("liked", "liked");
+        setIsLiked(true);
         setLikeCounter(response.data.count);
+        setIsLoading(false);
       });
   };
 
@@ -62,10 +84,25 @@ const Like = () => {
           </div>
         </ContentWrapper>
         <Vote>
-          <LikeWrapper onClick={leavLike}>
-            <LikeTitle>Daj Lajka</LikeTitle>
-            <LikeTitle>{likeCounter}</LikeTitle>
-            <Thumb />
+          <LikeWrapper
+            isLiked={isLiked} //@ts-ignore
+            onClick={!isLoading && !isLiked ? leavLike : null}
+          >
+            {isLoading ? (
+              <LikeTitle>Loading</LikeTitle>
+            ) : (
+              <>
+                <Flex>
+                  <div>
+                    <LikeTitle>{isLiked ? "Dzięki" : "Like"}</LikeTitle>
+                  </div>
+
+                  <Thumb isLiked={isLiked} />
+                </Flex>
+
+                <LikeTitle>{likeCounter}</LikeTitle>
+              </>
+            )}
           </LikeWrapper>
 
           <BeerWrapper

@@ -63,7 +63,7 @@ export const Title = styled.p`
   margin-bottom: 1.5rem;
 `;
 export const LikeTitle = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 `;
 
 export const Desc = styled.p`
@@ -72,11 +72,16 @@ export const Desc = styled.p`
   font-weight: 200;
 `;
 
-export const LikeWrapper = styled.div`
-  width: 45%;
-  justify-content: space-between;
-  height: 100%;
+type LikeProps = {
+  isLiked: boolean;
+};
+
+export const LikeWrapper = styled.div<LikeProps>`
+  width: 40%;
+  height: 6rem;
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   border: 2px solid blue;
   border-radius: 15px;
@@ -85,7 +90,7 @@ export const LikeWrapper = styled.div`
   color: blue;
   text-shadow: none;
   font-weight: bold;
-  filter: brightness(0.85);
+  filter: ${({ isLiked }) => (isLiked ? "brightness(1)" : "brightness(0.85)")};
   margin-bottom: 2rem;
   transition: 200ms ease-in-out;
   &:hover {
@@ -101,15 +106,24 @@ export const LinkRR = styled(Link)`
   text-decoration: underline;
 `;
 
-export const Thumb = styled(FiThumbsUp)`
-  font-size: 3rem;
+export const Thumb = styled(FiThumbsUp)<LikeProps>`
+  font-size: 2.5rem;
+  margin-bottom: 0.2rem;
+  transform: ${({ isLiked }) => (isLiked ? "rotate(-15deg)" : null)};
 `;
 export const Beer = styled(IoBeerOutline)`
   font-size: 3.5rem;
 `;
 
+export const Flex = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+`;
+
 export const BeerWrapper = styled.div`
-  width: 45%;
+  width: 40%;
   justify-content: space-between;
   justify-content: center;
   height: 100%;
