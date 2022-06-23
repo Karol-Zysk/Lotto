@@ -51,7 +51,8 @@ export const Title = styled.p`
 export const Desc = styled.p`
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
-  font-weight: 200;
+  font-weight: 400;
+  line-height: 1.7rem;
 `;
 
 export const ImageWrapper = styled.div`

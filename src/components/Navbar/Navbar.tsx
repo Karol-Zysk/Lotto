@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
-import { animateScroll as scroll } from "react-scroll/modules";
 import {
   Nav,
   Container,
-  Logo,
   MobileIcon,
   Menu,
   Item,
   NavLink,
   NavBtn,
   BtnLink,
+  LogoNavLink,
 } from "./Navbar.style";
 import { FaBars } from "react-icons/fa";
 import { NavbarProps } from "../../../type";
@@ -29,41 +28,31 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
     window.addEventListener("scroll", changeNav);
   }, []);
 
-  const toggleHome = () => {
-    scroll.scrollToTop();
-  };
-
   return (
     <>
       <Nav scrollNav={scrollNav}>
         <Container>
-          <Logo to="/" onClick={toggleHome}>
+          <LogoNavLink to="intro" smooth={true} duration={500} spy={true}>
             Lotto Symulator
-          </Logo>
+          </LogoNavLink>
+
           <MobileIcon onClick={toggle}>
             <FaBars />
           </MobileIcon>
           <Menu>
             <Item>
-              <NavLink
-                to="about"
-                smooth={true}
-                duration={500}
-                spy={true}
-                offset={-80}
-              >
+              <NavLink to="info" smooth={true} duration={500} spy={true}>
                 Informacje
               </NavLink>
             </Item>
 
-            
             <Item>
               <NavLink
                 to="calculator"
                 smooth={true}
                 duration={500}
                 spy={true}
-                offset={-80}
+                offset={-40}
               >
                 Kalkulator
               </NavLink>
@@ -74,7 +63,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
                 smooth={true}
                 duration={500}
                 spy={true}
-                offset={-80}
+                offset={20}
               >
                 Zostaw Łapkę
               </NavLink>

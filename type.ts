@@ -10,3 +10,13 @@ export type ArrowType = {
   path: string;
   text: string;
 };
+
+export type LikeProps = {
+  isLiked: boolean;
+  likeCounter: number;
+  isLoading: boolean;
+  leaveLike: () => Promise<void>;
+};
+
+
+

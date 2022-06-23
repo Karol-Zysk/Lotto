@@ -47,7 +47,7 @@ export const CalculationsTitle = styled.p`
 
 export const Wrapper = styled.div`
   width: 70%;
-  height: auto;
+  height: 70%;
   display: flex;
 `;
 

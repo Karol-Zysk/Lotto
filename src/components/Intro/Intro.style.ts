@@ -19,6 +19,19 @@ export const Wrapper = styled.div`
   display: flex;
   height: 70%;
   margin-top: 90px;
+  @media (max-width: 1480px) {
+    width: 80%;
+  }
+  @media (max-width: 1100px) {
+    width: 90%;
+  }
+  @media (max-width: 768px) {
+    width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
+  }
 `;
 
 export const Shape1 = styled.div`
@@ -30,6 +43,9 @@ export const Shape1 = styled.div`
   clip-path: polygon(100% 0%, 55% 0%, 55% 100%, 100% 100%);
   background-color: yellow;
   z-index: -1;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const ContentWrapper = styled.div`
@@ -41,6 +57,9 @@ export const ContentWrapper = styled.div`
   color: yellow;
   text-shadow: 2px 0px 2px black;
   padding: 1rem 2rem 1rem 1rem;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const Title = styled.p`
@@ -51,7 +70,8 @@ export const Title = styled.p`
 export const Desc = styled.p`
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
-  font-weight: 200;
+  font-weight: 400;
+  line-height: 1.7rem;
 `;
 
 export const ImageWrapper = styled.div`
@@ -60,6 +80,9 @@ export const ImageWrapper = styled.div`
   height: 70%;
   display: flex;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const Image = styled.img`

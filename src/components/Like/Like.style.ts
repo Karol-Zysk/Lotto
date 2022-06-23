@@ -5,7 +5,7 @@ import { IoBeerOutline } from "react-icons/io5";
 
 export const Container = styled.div`
   width: 100%;
-  min-height: 100vh;
+  min-height: 85vh;
   max-height: auto;
 
   display: flex;
@@ -69,11 +69,12 @@ export const LikeTitle = styled.p`
 export const Desc = styled.p`
   font-size: 1.1rem;
   margin-bottom: 2rem;
-  font-weight: 200;
+  font-weight: 400;
+  line-height: 1.7rem;
 `;
 
 type LikeProps = {
-  isLiked: boolean;
+  $isLiked: boolean;
 };
 
 export const LikeWrapper = styled.div<LikeProps>`
@@ -90,13 +91,14 @@ export const LikeWrapper = styled.div<LikeProps>`
   color: blue;
   text-shadow: none;
   font-weight: bold;
-  filter: ${({ isLiked }) => (isLiked ? "brightness(1)" : "brightness(0.85)")};
+  filter: ${({ $isLiked }) =>
+    $isLiked ? "brightness(1)" : "brightness(0.85)"};
   margin-bottom: 2rem;
   transition: 200ms ease-in-out;
   &:hover {
     transition: 200ms ease-in-out;
     filter: brightness(1);
-    transform: scale(1.02);
+    transform: ${({ $isLiked }) => ($isLiked ? "none" : "scaleX(1.05)")};
     cursor: pointer;
   }
 `;
@@ -109,7 +111,7 @@ export const LinkRR = styled(Link)`
 export const Thumb = styled(FiThumbsUp)<LikeProps>`
   font-size: 2.5rem;
   margin-bottom: 0.2rem;
-  transform: ${({ isLiked }) => (isLiked ? "rotate(-15deg)" : null)};
+  transform: ${({ $isLiked }) => ($isLiked ? "rotate(-15deg)" : null)};
 `;
 export const Beer = styled(IoBeerOutline)`
   font-size: 3.5rem;

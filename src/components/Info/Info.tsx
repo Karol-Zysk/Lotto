@@ -23,7 +23,7 @@ const Info = () => {
             </Title>{" "}
             <Desc>
               Aplikacja generuje losową kombinację 6 liczb z zakresu 1-49.
-              Następnie porównuje ją z podaną przez nas kombinacją.
+              Następnie porównuje ją z podaną przez Ciebie kombinacją.
             </Desc>
             {/* <Title>Lotto to szansa ale też ryzyko.</Title> */}
             <Desc>
@@ -31,11 +31,10 @@ const Info = () => {
               założona liczba kombinacji, a następnie porównywana z naszą
               szóstką.
             </Desc>
-            <Desc>Każde losowanie jest od siebie niezależne.</Desc>
             <Desc>
-              Nie został ustawiony limit liczby losowań ponieważ jest to zależne
-              od możliwości komputera. Mój świetnie sobie radzi przy 10mln
-              losowań jednocześnie jednak 20mln stanowi już wyzwanie.
+              Nie został ustawiony limit liczby losowań ponieważ
+              jest on zależny od możliwości komputera. Mój świetnie sobie radzi
+              przy 10mln losowań jednocześnie jednak 20mln stanowi już wyzwanie. 
             </Desc>
           </div>
           <Arrow path="calculator" text="Zagraj!" />

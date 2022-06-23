@@ -8,14 +8,8 @@ import {
   Title,
   Wrapper,
   LinkRR,
-  Thumb,
-  LikeWrapper,
-  Vote,
-  LikeTitle,
-  BeerWrapper,
-  Beer,
-  Flex,
 } from "./Like.style";
+import LikeandBeer from "./Parts/LikeandBeer";
 
 const Like = () => {
   const [likeCounter, setLikeCounter] = useState<number>(0);
@@ -43,7 +37,7 @@ const Like = () => {
   }, []);
 
   const likes = { count: likeCounter + 1 };
-  const leavLike = async () => {
+  const leaveLike = async () => {
     setIsLoading(true);
 
     await axios
@@ -83,41 +77,12 @@ const Like = () => {
             </Desc>
           </div>
         </ContentWrapper>
-        <Vote>
-          <LikeWrapper
-            isLiked={isLiked} //@ts-ignore
-            onClick={!isLoading && !isLiked ? leavLike : null}
-          >
-            {isLoading ? (
-              <LikeTitle>Loading</LikeTitle>
-            ) : (
-              <>
-                <Flex>
-                  <div>
-                    <LikeTitle>{isLiked ? "Dzięki" : "Like"}</LikeTitle>
-                  </div>
-
-                  <Thumb isLiked={isLiked} />
-                </Flex>
-
-                <LikeTitle>{likeCounter}</LikeTitle>
-              </>
-            )}
-          </LikeWrapper>
-
-          <BeerWrapper
-            onClick={() =>
-              window.open(
-                "https://zrzutka.pl/",
-                "zrzutka",
-                "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes"
-              )
-            }
-          >
-            <LikeTitle>Postaw Piwo</LikeTitle>
-            <Beer />
-          </BeerWrapper>
-        </Vote>
+        <LikeandBeer
+          isLiked={isLiked}
+          likeCounter={likeCounter}
+          isLoading={isLoading}
+          leaveLike={leaveLike}
+        />
       </Wrapper>
       <Shape1 />
     </Container>
