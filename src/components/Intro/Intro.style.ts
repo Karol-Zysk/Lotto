@@ -12,6 +12,9 @@ export const Container = styled.div`
   background-color: blue;
   display: flex;
   z-index: 0;
+  @media (max-width: 768px) {
+    padding-bottom: 4rem;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -26,11 +29,10 @@ export const Wrapper = styled.div`
     width: 90%;
   }
   @media (max-width: 768px) {
-    width: 90%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20vh;
+    margin-top: 25vh;
   }
 `;
 
@@ -44,7 +46,22 @@ export const Shape1 = styled.div`
   background-color: yellow;
   z-index: -1;
   @media (max-width: 768px) {
-    display: none;
+    clip-path: circle(27% at 100% 0);
+  }
+`;
+export const Shape2 = styled.div`
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    clip-path: circle(15% at 0 100%);
+    background-color: yellow;
+
+    z-index: -1;
   }
 `;
 
@@ -58,13 +75,20 @@ export const ContentWrapper = styled.div`
   text-shadow: 2px 0px 2px black;
   padding: 1rem 2rem 1rem 1rem;
   @media (max-width: 768px) {
-    width: 90%;
+    width: 100%;
+    padding: 1rem 2rem;
   }
 `;
 
 export const Title = styled.p`
   font-size: 1.4rem;
   margin-bottom: 1rem;
+  @media (max-width: 1180px) {
+    font-size: 1.3rem;
+  }
+  @media (max-width: 960px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const Desc = styled.p`
@@ -72,6 +96,12 @@ export const Desc = styled.p`
   margin-bottom: 1.5rem;
   font-weight: 400;
   line-height: 1.7rem;
+  @media (max-width: 1180px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 960px) {
+    font-size: 0.9rem;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -81,7 +111,7 @@ export const ImageWrapper = styled.div`
   display: flex;
   align-items: center;
   @media (max-width: 768px) {
-    width: 90%;
+    display: none;
   }
 `;
 

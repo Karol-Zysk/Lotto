@@ -6,6 +6,7 @@ import {
   Image,
   ImageWrapper,
   Shape1,
+  Shape2,
   Title,
   Wrapper,
 } from "./Intro.style";
@@ -40,6 +41,7 @@ const Intro = () => {
         </ImageWrapper>
       </Wrapper>
       <Shape1 />
+      <Shape2/>
     </Container>
   );
 };

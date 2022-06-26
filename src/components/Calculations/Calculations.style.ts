@@ -15,6 +15,9 @@ export const Container = styled.div`
   color: rgba(255, 240, 0);
   text-align: left;
   z-index: 0;
+  @media (max-width: 768px) {
+    padding-top: 7rem;
+  }
 `;
 
 export const Shape1 = styled.div`
@@ -26,6 +29,9 @@ export const Shape1 = styled.div`
   clip-path: polygon(100% 0%, 55% 0%, 100% 39%);
   background-color: yellow;
   z-index: -1;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 export const Shape = styled.div`
   width: 100%;
@@ -36,19 +42,39 @@ export const Shape = styled.div`
   clip-path: polygon(0% 20%, -40% 0%, 53% 100%, 0% 100%);
   background-color: yellow;
   z-index: -1;
+  @media (max-width: 768px) {
+    clip-path: polygon(0 0, 44% 0, 100% 15%, 100% 57%, 0 30%);
+  }
 `;
 
 export const CalculationsTitle = styled.p`
-  font-size: 2.3rem;
+  font-size: 2.1rem;
   margin-bottom: 1rem;
   text-shadow: 2px 0px 2px black;
   font-weight: bold;
+  @media (max-width: 1180px) {
+    font-size: 1.8rem;
+  }
+  @media (max-width: 960px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 768px) {
+    color: blue;
+    text-shadow: 2px 0px 2px white;
+  }
 `;
 
 export const Wrapper = styled.div`
   width: 70%;
   height: 70%;
   display: flex;
+  @media (max-width: 968px) {
+    width: 80%;
+  }
+  @media (max-width: 768px) {
+    width: 90%;
+    flex-direction: column;
+  }
 `;
 
 export const InputsContainer = styled.div`
@@ -56,14 +82,21 @@ export const InputsContainer = styled.div`
   flex-direction: column;
   width: 60%;
   padding: 2rem;
-  /* border: 1px solid red; */
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 1rem;
+  }
 `;
 export const ResultsContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 2rem;
+  border: 2px solid red;
   padding-left: 4rem;
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 export const ResultsAndArrow = styled.div`
@@ -71,8 +104,9 @@ export const ResultsAndArrow = styled.div`
   width: 40%;
   flex-direction: column;
   color: white;
-
-  /* border: 1px solid red; */
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 export const IconWrapper = styled.div`
   display: flex;
@@ -81,9 +115,9 @@ export const IconWrapper = styled.div`
   width: 100%;
   padding-top: 3rem;
   text-shadow: 2px 0px 2px black;
-
   align-items: center;
   color: yellow;
+  padding: 1rem;
 `;
 
 export const LinkRS = styled(Link)`
@@ -96,6 +130,10 @@ export const ArrowIcon = styled(CgArrowDownO)`
   transition: 100ms ease-in-out;
   cursor: pointer;
   margin-bottom: 1.2rem;
+  @media (max-width: 768px) {
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+  }
   &:hover {
     transition: 100ms ease-in-out;
     transform: scale(1.1);
@@ -107,11 +145,22 @@ export const InputsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 2.2rem;
+  @media (max-width: 768px) {
+    width: 70%;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 500px) {
+    width: 90%;
+  }
 `;
 export const ResultsWrapper = styled.div`
   margin-bottom: 2.2rem;
   color: yellow;
   text-shadow: 2px 0px 2px black;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom:1.5rem;
+  }
 `;
 
 export const Input = styled.input`
@@ -120,16 +169,43 @@ export const Input = styled.input`
   font-size: 1.1rem;
   text-align: center;
   border-radius: 8px;
+  @media (max-width: 768px) {
+    width: 2.2rem;
+    height: 2.3rem;
+    font-size: 0.9rem;
+  }
 `;
 
 export const InputsText = styled.p`
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
   text-shadow: 2px 0px 2px black;
+  @media (max-width: 1180px) {
+    font-size: 1.6rem;
+  }
+  @media (max-width: 960px) {
+    font-size: 1.3rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom:0;
+    color: blue;
+    text-shadow: 2px 0px 2px white;
+  }
 `;
 export const ResultsText = styled.p`
   font-size: 1.8rem;
   margin-bottom: 1rem;
+  @media (max-width: 1180px) {
+    font-size: 1.6rem;
+  }
+  @media (max-width: 960px) {
+    font-size: 1.3rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom:0;
+  }
 `;
 export const TextWrapper = styled.div`
   margin-bottom: 1.5rem;
@@ -163,11 +239,40 @@ export const Button = styled.button`
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   font-weight: bold;
+  @media (max-width: 768px) {
+    padding: 8px 18px;
+    font-size: 0.8rem;
+  }
   &:hover {
     transition: all 0.2s ease-in-out;
     color: yellow;
     background-color: blue;
-    border: 3px solid white;
+    border: 3px solid yellow;
+  }
+`;
+export const Button2 = styled.button`
+  width: auto;
+  border-radius: 15px;
+  background-color: yellow;
+  white-space: nowrap;
+  padding: 10px 22px;
+  color: blue;
+  font-size: 1rem;
+  outline: none;
+  border: 3px solid blue;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  font-weight: bold;
+  @media (max-width: 768px) {
+    padding: 8px 18px;
+    font-size: 0.8rem;
+  }
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    color: yellow;
+    background-color: blue;
+    border: 3px solid yellow;
   }
 `;
 
@@ -195,6 +300,9 @@ export const ErrorTxt = styled.p`
 export const ArrowText = styled.p`
   font-size: 1rem;
   font-weight: bold;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const Num = styled.span`
@@ -202,10 +310,18 @@ export const Num = styled.span`
   margin-left: 0.5rem;
   font-weight: 400;
   font-family: "Orbitron", sans-serif;
+  @media (max-width: 768px) {
+    margin-left: 0.2rem;
+    font-size: 1.1rem;
+  }
 `;
 export const Result = styled.p`
   font-size: 1.2rem;
   margin-bottom: 0.7rem;
+  @media (max-width: 768px) {
+    margin-left: 0.2rem;
+    font-size: 1rem;
+  }
 `;
 
 export const Astrix = styled.p`

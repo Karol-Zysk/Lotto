@@ -4,6 +4,7 @@ import {
   BtnErrorWrapper,
   BtnWrapper,
   Button,
+  Button2,
   DrawWrapper,
   ErrorMsgWrapper,
   ErrorTxt,
@@ -117,7 +118,9 @@ const Inputs: React.FC<Props> = ({
           <ErrorTxt>{errorMsg}</ErrorTxt>
         </ErrorMsgWrapper>
         <BtnWrapper>
-          <Button onClick={handleCalculateResults}>Losuj</Button>
+          <Button2  onClick={handleCalculateResults}>
+            Losuj
+          </Button2>
         </BtnWrapper>
       </BtnErrorWrapper>
     </InputsContainer>

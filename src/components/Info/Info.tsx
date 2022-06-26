@@ -6,6 +6,7 @@ import {
   Image,
   ImageWrapper,
   Shape1,
+  Shape2,
   Title,
   Wrapper,
 } from "./Infoo.style";
@@ -44,6 +45,7 @@ const Info = () => {
         </ImageWrapper>
       </Wrapper>
       <Shape1 />
+      <Shape2 />
     </Container>
   );
 };

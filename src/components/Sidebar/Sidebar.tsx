@@ -19,7 +19,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggle }) => {
       </Icon>
       <Wraper>
         <Menu>
-          <SidebarLink to="about" onClick={toggle}>
+          <SidebarLink to="info" onClick={toggle}>
             Informacje
           </SidebarLink>
 

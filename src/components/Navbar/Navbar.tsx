@@ -36,8 +36,8 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
             Lotto Symulator
           </LogoNavLink>
 
-          <MobileIcon onClick={toggle}>
-            <FaBars />
+          <MobileIcon scrollNav={scrollNav} onClick={toggle}>
+            <FaBars  />
           </MobileIcon>
           <Menu>
             <Item>

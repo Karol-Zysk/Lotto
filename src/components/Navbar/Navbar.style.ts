@@ -65,11 +65,12 @@ export const LogoNavLink = styled(LinkScroll)`
   }
 `;
 
-export const MobileIcon = styled.div`
+export const MobileIcon = styled.div<StyledProps>`
   display: none;
   @media screen and (max-width: 768px) {
     display: block;
-    color: yellow;
+    color: ${({ scrollNav }) => (scrollNav ? "yellow" : "blue")};
+
     text-shadow: 1px 1px 1px black;
     position: absolute;
     top: 0;
@@ -94,7 +95,6 @@ export const Menu = styled.ul`
     padding-right: 20%;
     width: 70%;
   }
-  
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -132,7 +132,6 @@ export const NavLink = styled(LinkScroll)`
   @media (max-width: 1480px) {
     font-size: 1rem;
   }
-  
 `;
 
 export const NavBtn = styled.nav`
