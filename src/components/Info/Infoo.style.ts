@@ -59,7 +59,7 @@ export const Shape2 = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    clip-path: polygon(0 85%, 0% 100%, 44% 100%);
+    clip-path: polygon(0 88%, 0% 100%, 44% 100%);
     background-color: yellow;
     z-index: -1;
   }

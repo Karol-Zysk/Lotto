@@ -8,6 +8,7 @@ import {
   Title,
   Wrapper,
   LinkRR,
+  Shape,
 } from "./Like.style";
 import LikeandBeer from "./Parts/LikeandBeer";
 
@@ -85,6 +86,7 @@ const Like = () => {
         />
       </Wrapper>
       <Shape1 />
+      <Shape />
     </Container>
   );
 };

@@ -13,6 +13,8 @@ import {
 import { FaBars } from "react-icons/fa";
 import { NavbarProps } from "../../../type";
 
+
+
 const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
 

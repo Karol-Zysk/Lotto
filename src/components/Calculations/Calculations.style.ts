@@ -44,7 +44,21 @@ export const Shape = styled.div`
   background-color: yellow;
   z-index: -1;
   @media (max-width: 768px) {
-    clip-path: polygon(0 0, 44% 0, 100% 15%, 100% 57%, 0 30%);
+    clip-path: polygon(0 0, 44% 0, 100% 15%, 100% 60%, 0 40%);
+  }
+`;
+export const SmallShape = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  background-color: yellow;
+  z-index: -1;
+  @media (max-width: 768px) {
+    display: block;
+    clip-path: circle(4% at 90% 4%);
   }
 `;
 
@@ -84,7 +98,6 @@ export const InputsContainer = styled.div`
   flex-direction: column;
   width: 60%;
   padding: 2rem;
-  border: 2px solid red;
   @media (max-width: 768px) {
     width: 100%;
     padding: 1rem;
@@ -95,7 +108,6 @@ export const ResultsContainer = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 2rem;
-  border: 2px solid red;
   padding-left: 4rem;
   @media (max-width: 1384px) {
     padding: 2rem;
@@ -127,6 +139,9 @@ export const IconWrapper = styled.div`
   align-items: center;
   color: yellow;
   padding: 1rem;
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
 `;
 
 export const LinkRS = styled(Link)`
@@ -140,7 +155,7 @@ export const ArrowIcon = styled(CgArrowDownO)`
   cursor: pointer;
   margin-bottom: 1.2rem;
   @media (max-width: 768px) {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     font-size: 2rem;
   }
   &:hover {

@@ -1,5 +1,6 @@
 import { animate } from "framer-motion";
 import { useEffect, useRef } from "react";
+import {  stringsWithCommas } from "../../utils/options";
 import { Num } from "../Calculations/Calculations.style";
 
 function Counter({ from, to }: any) {
@@ -12,7 +13,7 @@ function Counter({ from, to }: any) {
       duration: 3.5,
       ease: "easeOut",
       onUpdate(value: number) {
-        node.textContent = value.toFixed();
+        node.textContent = stringsWithCommas(value.toFixed());
       },
     });
 

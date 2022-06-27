@@ -15,6 +15,7 @@ import {
   ResultsAndArrow,
   Shape,
   Shape1,
+  SmallShape,
   Wrapper,
 } from "./Calculations.style";
 import Expenses from "../Expenses/Expenses";
@@ -157,6 +158,7 @@ function Calculations() {
         <Arrow path="expenses" text="Podsumowanie" />
         <Shape1 />
         <Shape />
+        <SmallShape />
       </Container>
       <Expenses numberOfWins={numberOfWins} />
     </>

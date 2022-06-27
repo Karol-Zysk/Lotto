@@ -89,7 +89,6 @@ export const Menu = styled.ul`
   font-weight: bold;
   list-style: none;
   text-align: center;
-  border: 2px solid red;
   @media (max-width: 1480px) {
     justify-content: space-around;
     padding-right: 20%;

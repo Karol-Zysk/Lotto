@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { WinsState } from "../../utils/numberOfWinsReducer";
+import { numberWithCommas } from "../../utils/options";
 import {
   BiggerText,
   BigText,
@@ -49,28 +50,30 @@ const Expenses: React.FC<Props> = ({
             ) : draws !== 0 && balance === 0 ? (
               "wychodzisz na zero"
             ) : balance < 0 ? (
-              `Straciłeś: ${Math.abs(balance)} zł`
+              `Straciłeś: ${numberWithCommas(Math.abs(balance))} zł`
             ) : (
-              `Wow. Jesteś do przodu o: ${balance} zł`
+              `Wow. Jesteś do przodu o: ${numberWithCommas(balance)} zł`
             )}
           </BigText>
           <ButtonBlue onClick={() => setMoreInfo(!moreInfo)}>
-            Więcej Informacji
+            {!moreInfo ? "Więcej Informacji" : "Mniej Informacji"}
           </ButtonBlue>
           <MoreText>
             {moreInfo && (
               <>
                 <TextWrapper>
                   <Title>Wydane pieniądze:</Title>
-                  <Text>{moneySpent} zł</Text>
+                  <Text>{numberWithCommas(moneySpent)} zł</Text>
                 </TextWrapper>
                 <TextWrapper>
                   <Title>Twoje wygrane:</Title>
-                  <Text>trójki: {threePay} zł </Text>
-                  <Text>czwórki: {fourPay} zł</Text>
-                  <Text>piątki: {fivePay} zł</Text>
-                  <Text>szóstki: {sixPay} zł</Text>
-                  <BiggerText>Suma wygranych: {sumOfWins} zł</BiggerText>
+                  <Text>trójki: {numberWithCommas(threePay)} zł </Text>
+                  <Text>czwórki: {numberWithCommas(fourPay)} zł</Text>
+                  <Text>piątki: {numberWithCommas(fivePay)} zł</Text>
+                  <Text>szóstki: {numberWithCommas(sixPay)} zł</Text>
+                  <BiggerText>
+                    Suma wygranych: {numberWithCommas(sumOfWins)} zł
+                  </BiggerText>
                 </TextWrapper>
               </>
             )}

@@ -41,7 +41,7 @@ export const Shape1 = styled.div`
   z-index: -1;
   @media (max-width: 768px) {
     background-color: blue;
-    clip-path: circle(28% at 15% 105%);
+    clip-path: circle(20.7% at 0 100%);
   }
 `;
 

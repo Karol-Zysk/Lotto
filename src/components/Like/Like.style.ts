@@ -5,7 +5,7 @@ import { IoBeerOutline } from "react-icons/io5";
 
 export const Container = styled.div`
   width: 100%;
-  min-height: 85vh;
+  min-height: 100vh;
   max-height: auto;
 
   display: flex;
@@ -20,17 +20,20 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   width: 70%;
   display: flex;
-  height: 100%;
-  padding-top: 1rem;
-  margin-top: 110px;
-  @media (max-width: 1300px) {
-    width: 90%;
+  height: 70%;
+  margin-top: 2rem;
+  /* margin-top: 90px; */
+  @media (max-width: 1480px) {
+    width: 80%;
   }
   @media (max-width: 1100px) {
-    width: 100%;
+    width: 90%;
   }
   @media (max-width: 768px) {
-    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
 `;
 
@@ -39,19 +42,33 @@ export const Shape1 = styled.div`
   height: 100%;
   position: absolute;
   top: 0;
+  z-index: -1;
   left: 0;
   clip-path: polygon(100% 0%, 53% 0%, 53% 100%, 100% 100%);
   background-color: yellow;
-  z-index: -1;
 
   @media (max-width: 768px) {
-    clip-path: polygon(100% 0%, 66% 0%, 66% 100%, 100% 100%);
+    background-color: yellow;
+    clip-path: circle(25.9% at 100% 0);
+  }
+`;
+export const Shape = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  left: 0;
+  background-color: yellow;
+  display: none;
+
+  @media (max-width: 768px) {
+    clip-path: circle(20.8% at 23% 100%);
   }
 `;
 
 export const ContentWrapper = styled.div`
   justify-content: center;
-  height: 100%;
   display: flex;
   flex-direction: column;
   width: 55%;
@@ -59,23 +76,25 @@ export const ContentWrapper = styled.div`
   text-shadow: 2px 0px 2px black;
   padding: 2rem;
   @media (max-width: 768px) {
-    width: 68%;
-    padding: 1rem;
+    width: 100%;
+    padding: 1rem 2rem;
   }
 `;
 export const Vote = styled.div`
   justify-content: center;
   align-items: center;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
   width: 45%;
   color: yellow;
   text-shadow: 2px 0px 2px black;
   padding: 2rem;
   @media (max-width: 768px) {
-    width: 32%;
+    width: 100%;
     padding: 0;
+    flex-direction: row;
+    justify-content: space-around;
   }
 `;
 
@@ -90,10 +109,14 @@ export const Title = styled.p`
   }
   @media (max-width: 768px) {
     font-size: 1.4rem;
+    margin-bottom: 1rem;
   }
 `;
 export const LikeTitle = styled.p`
   font-size: 1.4rem;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Desc = styled.p`
@@ -107,6 +130,7 @@ export const Desc = styled.p`
   }
   @media (max-width: 768px) {
     font-size: 0.9rem;
+    margin-bottom: 1.2rem;
   }
 `;
 
@@ -115,13 +139,13 @@ type LikeProps = {
 };
 
 export const LikeWrapper = styled.div<LikeProps>`
-  width: 40%;
+  width: 10rem;
   height: 6rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border: 2px solid blue;
+  border: 3px solid blue;
   border-radius: 15px;
   padding: 1rem;
   background-color: white;
@@ -132,6 +156,12 @@ export const LikeWrapper = styled.div<LikeProps>`
     $isLiked ? "brightness(1)" : "brightness(0.85)"};
   margin-bottom: 2rem;
   transition: 200ms ease-in-out;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 4rem;
+    width: 8rem;
+    margin-bottom: 0;
+  }
   &:hover {
     transition: 200ms ease-in-out;
     filter: brightness(1);
@@ -149,9 +179,15 @@ export const Thumb = styled(FiThumbsUp)<LikeProps>`
   font-size: 2.5rem;
   margin-bottom: 0.2rem;
   transform: ${({ $isLiked }) => ($isLiked ? "rotate(-15deg)" : null)};
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 export const Beer = styled(IoBeerOutline)`
   font-size: 3.5rem;
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  }
 `;
 
 export const Flex = styled.div`
@@ -162,13 +198,14 @@ export const Flex = styled.div`
 `;
 
 export const BeerWrapper = styled.div`
-  width: 40%;
+  width: 10rem;
+  max-height: 6rem;
   justify-content: space-between;
   justify-content: center;
   height: 100%;
   display: flex;
   align-items: center;
-  border: 2px solid orange;
+  border: 3px solid orange;
   border-radius: 15px;
   padding: 1rem;
   background-color: white;
@@ -182,5 +219,12 @@ export const BeerWrapper = styled.div`
     transform: scale(1.02);
     filter: brightness(1);
     cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 2rem;
+    height: 4rem;
+    width: 8rem;
+    margin-bottom: 0;
   }
 `;
