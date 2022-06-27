@@ -62,7 +62,7 @@ const Results: React.FC<Props> = ({
   return (
     <ResultsContainer>
       <ResultsWrapper>
-        <ResultsText>Wyniki</ResultsText>
+        <ResultsText>3. Wyniki</ResultsText>
         <Result>
           Liczba losowań: <Counter from={fromDraw} to={draws} />
         </Result>
@@ -75,7 +75,7 @@ const Results: React.FC<Props> = ({
         <Result>
           piątki: <Counter from={fromFive} to={fives} />
         </Result>
-        <Result style={{ fontSize: "1.6rem" }}>
+        <Result>
           szóstki: <Counter from={fromSix} to={sixes} />
         </Result>
       </ResultsWrapper>

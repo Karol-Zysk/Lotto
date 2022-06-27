@@ -1,13 +1,9 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { IState } from "../../../utils/userArrayReducer";
 import {
-  BtnErrorWrapper,
-  BtnWrapper,
-  Button,
+  BtnWrapper2,
   Button2,
   DrawWrapper,
-  ErrorMsgWrapper,
-  ErrorTxt,
   HitsWrapper,
   Input,
   InputsContainer,
@@ -103,26 +99,21 @@ const Inputs: React.FC<Props> = ({
         <TextWrapper>
           <InputsText>2. Ustaw ilość losowań</InputsText>
         </TextWrapper>
+        <BtnWrapper2>
+          <Input
+            style={{ width: "8.5rem", alignSelf: "center" }}
+            value={howManyDraws ? howManyDraws : ""}
+            min="1"
+            max="20000000"
+            type="number"
+            onChange={(e) => setHowManyDraws(e.target.value || "")}
+          />
 
-        <Input
-          style={{ width: "8.5rem", alignSelf: "center" }}
-          value={howManyDraws ? howManyDraws : ""}
-          min="1"
-          max="20000000"
-          type="number"
-          onChange={(e) => setHowManyDraws(e.target.value || "")}
-        />
+          <Button2 onClick={handleCalculateResults}>Losuj</Button2>
+        </BtnWrapper2>
       </DrawWrapper>
-      <BtnErrorWrapper>
-        <ErrorMsgWrapper>
-          <ErrorTxt>{errorMsg}</ErrorTxt>
-        </ErrorMsgWrapper>
-        <BtnWrapper>
-          <Button2  onClick={handleCalculateResults}>
-            Losuj
-          </Button2>
-        </BtnWrapper>
-      </BtnErrorWrapper>
+
+      
     </InputsContainer>
   );
 };

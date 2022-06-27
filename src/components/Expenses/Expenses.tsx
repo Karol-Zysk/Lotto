@@ -10,6 +10,7 @@ import {
   Shape,
   Shape1,
   Text,
+  TextWrapper,
   Title,
   Wrapper,
 } from "./Expenses.style";
@@ -59,18 +60,18 @@ const Expenses: React.FC<Props> = ({
           <MoreText>
             {moreInfo && (
               <>
-                <div>
+                <TextWrapper>
                   <Title>Wydane pieniądze:</Title>
                   <Text>{moneySpent} zł</Text>
-                </div>
-                <div>
+                </TextWrapper>
+                <TextWrapper>
                   <Title>Twoje wygrane:</Title>
                   <Text>trójki: {threePay} zł </Text>
                   <Text>czwórki: {fourPay} zł</Text>
                   <Text>piątki: {fivePay} zł</Text>
                   <Text>szóstki: {sixPay} zł</Text>
                   <BiggerText>Suma wygranych: {sumOfWins} zł</BiggerText>
-                </div>
+                </TextWrapper>
               </>
             )}
           </MoreText>

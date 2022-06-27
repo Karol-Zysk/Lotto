@@ -16,7 +16,8 @@ export const Container = styled.div`
   text-align: left;
   z-index: 0;
   @media (max-width: 768px) {
-    padding-top: 7rem;
+    /* padding-top: 7rem; */
+    height: 100vh;
   }
 `;
 
@@ -60,6 +61,7 @@ export const CalculationsTitle = styled.p`
   }
   @media (max-width: 768px) {
     color: blue;
+    margin-top: 5rem;
     text-shadow: 2px 0px 2px white;
   }
 `;
@@ -68,8 +70,8 @@ export const Wrapper = styled.div`
   width: 70%;
   height: 70%;
   display: flex;
-  @media (max-width: 968px) {
-    width: 80%;
+  @media (max-width: 1458px) {
+    width: 90%;
   }
   @media (max-width: 768px) {
     width: 90%;
@@ -82,6 +84,7 @@ export const InputsContainer = styled.div`
   flex-direction: column;
   width: 60%;
   padding: 2rem;
+  border: 2px solid red;
   @media (max-width: 768px) {
     width: 100%;
     padding: 1rem;
@@ -94,8 +97,14 @@ export const ResultsContainer = styled.div`
   padding: 2rem;
   border: 2px solid red;
   padding-left: 4rem;
+  @media (max-width: 1384px) {
+    padding: 2rem;
+  }
   @media (max-width: 768px) {
     padding: 1rem;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
   }
 `;
 
@@ -159,7 +168,7 @@ export const ResultsWrapper = styled.div`
   text-shadow: 2px 0px 2px black;
   @media (max-width: 768px) {
     width: 100%;
-    margin-bottom:1.5rem;
+    margin-bottom: 0.8rem;
   }
 `;
 
@@ -178,6 +187,7 @@ export const Input = styled.input`
 
 export const InputsText = styled.p`
   font-size: 1.8rem;
+  font-weight: bold;
   margin-bottom: 0.5rem;
   text-shadow: 2px 0px 2px black;
   @media (max-width: 1180px) {
@@ -187,24 +197,25 @@ export const InputsText = styled.p`
     font-size: 1.3rem;
   }
   @media (max-width: 768px) {
-    font-size: 1.1rem;
-    margin-bottom:0;
+    font-size: 1.2rem;
+    margin-bottom: 0;
     color: blue;
     text-shadow: 2px 0px 2px white;
   }
 `;
 export const ResultsText = styled.p`
   font-size: 1.8rem;
+  font-weight: bold;
   margin-bottom: 1rem;
   @media (max-width: 1180px) {
     font-size: 1.6rem;
   }
   @media (max-width: 960px) {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
   @media (max-width: 768px) {
-    font-size: 1.1rem;
-    margin-bottom:0;
+    font-size: 1.2rem;
+    margin-bottom: 0.7rem;
   }
 `;
 export const TextWrapper = styled.div`
@@ -221,8 +232,11 @@ export const DrawWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 80%;
+  width: 100%;
   margin-bottom: 2.5rem;
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
 `;
 
 export const Button = styled.button`
@@ -242,6 +256,7 @@ export const Button = styled.button`
   @media (max-width: 768px) {
     padding: 8px 18px;
     font-size: 0.8rem;
+    height: min-content;
   }
   &:hover {
     transition: all 0.2s ease-in-out;
@@ -283,7 +298,22 @@ export const BtnErrorWrapper = styled.div`
 export const BtnWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  @media (max-width: 768px) {
+    width: auto;
+    align-items: flex-end;
+    height: 10%;
+    margin-bottom: 1rem;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+  }
+`;
+
+export const BtnWrapper2 = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 `;
 export const ErrorMsgWrapper = styled.div`
   width: 90%;
@@ -306,7 +336,7 @@ export const ArrowText = styled.p`
 `;
 
 export const Num = styled.span`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin-left: 0.5rem;
   font-weight: 400;
   font-family: "Orbitron", sans-serif;

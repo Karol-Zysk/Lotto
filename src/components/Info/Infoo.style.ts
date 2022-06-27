@@ -13,6 +13,7 @@ export const Container = styled.div`
   z-index: 0;
   @media (max-width: 768px) {
     padding-bottom: 4rem;
+    height: 100vh;
   }
 `;
 
@@ -31,7 +32,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10vh;
+    margin-top: 25vh;
   }
 `;
 
@@ -58,7 +59,7 @@ export const Shape2 = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    clip-path: circle(29.4% at 0 100%);
+    clip-path: polygon(0 85%, 0% 100%, 44% 100%);
     background-color: yellow;
     z-index: -1;
   }

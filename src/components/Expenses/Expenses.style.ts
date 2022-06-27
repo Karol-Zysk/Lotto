@@ -26,6 +26,9 @@ export const Shape = styled.div`
   clip-path: polygon(100% 0%, 53% 0%, 100% 48%);
   background-color: blue;
   z-index: -1;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 export const Shape1 = styled.div`
   width: 100%;
@@ -36,6 +39,10 @@ export const Shape1 = styled.div`
   clip-path: polygon(0% 20%, -40% 0%, 53% 100%, 0% 100%);
   background-color: blue;
   z-index: -1;
+  @media (max-width: 768px) {
+    background-color: blue;
+    clip-path: circle(28% at 15% 105%);
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -43,15 +50,25 @@ export const Wrapper = styled.div`
   height: 80%;
   display: flex;
   flex-direction: column;
+  @media (max-width: 1304px) {
+    width: 80%;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const GainsAndLoses = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  padding-top: 5rem;
   align-items: center;
   flex-direction: column;
+  @media (max-width: 1024px) {
+    width: 90%;
+    height: 90%;
+  }
 `;
 
 export const Assumptions = styled.div`
@@ -72,6 +89,21 @@ export const BigText = styled.div`
   font-weight: bold;
   text-align: center;
   margin-bottom: 2rem;
+  @media (max-width: 1304px) {
+    font-size: 2.7rem;
+    width: 90%;
+  }
+  @media (max-width: 1024px) {
+    font-size: 2.4rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    width: 100%;
+  }
+  @media (max-width: 500px) {
+    font-size: 1.8rem;
+    width: 100%;
+  }
 `;
 export const MoreText = styled.div`
   font-size: 1rem;
@@ -79,10 +111,31 @@ export const MoreText = styled.div`
   justify-content: space-around;
   margin-bottom: 0.5rem;
   display: flex;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+export const TextWrapper = styled.div`
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  width: 70%;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+  @media (max-width: 468px) {
+    width: 100%;
+  }
 `;
 
 export const Title = styled.h2`
   margin-bottom: 1rem;
+  text-align: center;
 `;
 export const Text = styled.p`
   margin-bottom: 0.5rem;

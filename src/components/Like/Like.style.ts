@@ -23,6 +23,15 @@ export const Wrapper = styled.div`
   height: 100%;
   padding-top: 1rem;
   margin-top: 110px;
+  @media (max-width: 1300px) {
+    width: 90%;
+  }
+  @media (max-width: 1100px) {
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Shape1 = styled.div`
@@ -34,6 +43,10 @@ export const Shape1 = styled.div`
   clip-path: polygon(100% 0%, 53% 0%, 53% 100%, 100% 100%);
   background-color: yellow;
   z-index: -1;
+
+  @media (max-width: 768px) {
+    clip-path: polygon(100% 0%, 66% 0%, 66% 100%, 100% 100%);
+  }
 `;
 
 export const ContentWrapper = styled.div`
@@ -45,6 +58,10 @@ export const ContentWrapper = styled.div`
   color: yellow;
   text-shadow: 2px 0px 2px black;
   padding: 2rem;
+  @media (max-width: 768px) {
+    width: 68%;
+    padding: 1rem;
+  }
 `;
 export const Vote = styled.div`
   justify-content: center;
@@ -56,11 +73,24 @@ export const Vote = styled.div`
   color: yellow;
   text-shadow: 2px 0px 2px black;
   padding: 2rem;
+  @media (max-width: 768px) {
+    width: 32%;
+    padding: 0;
+  }
 `;
 
 export const Title = styled.p`
   font-size: 2.1rem;
   margin-bottom: 1.5rem;
+  @media (max-width: 1300px) {
+    font-size: 2rem;
+  }
+  @media (max-width: 1100px) {
+    font-size: 1.9rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
 `;
 export const LikeTitle = styled.p`
   font-size: 1.4rem;
@@ -71,6 +101,13 @@ export const Desc = styled.p`
   margin-bottom: 2rem;
   font-weight: 400;
   line-height: 1.7rem;
+
+  @media (max-width: 1100px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 type LikeProps = {
