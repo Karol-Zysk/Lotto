@@ -10,6 +10,8 @@ import {
   LinkRR,
   Shape,
 } from "./Like.style";
+import { FiThumbsUp } from "react-icons/fi";
+
 import LikeandBeer from "./Parts/LikeandBeer";
 
 const Like = () => {
@@ -61,16 +63,16 @@ const Like = () => {
             </Title>{" "}
             <Desc>To jeszcze nie koniec.</Desc>
             <Desc>
-              Jeśli chcesz by aplikacja była rozwijana pokaż to bym wiedział, że
-              nie robię tego tylko dla siebie. Kliknij Lajka lub postaw mi
-              wirtualne piwo.
+              Zostaw{" "}
+              <b>
+                <FiThumbsUp />
+              </b>{" "}
+              jeśli aplikacja Ci pomogła i chcesz by była dalej rozwijana.
             </Desc>
             <Desc>
               {" "}
-              W planach mam jeszcze dodanie opcji innych gier jak Multi Multi
-              czy Mini Lotto. Rankingu najlepszych wyników. Jak również
-              sprawdzania czy Twój numer już kiedyś padł w historii prawdziwych
-              losowań.{" "}
+              W planach mam dodanie opcji innych gier jak Multi Multi czy Mini
+              Lotto. {" "}
             </Desc>
             <Desc>
               Masz inne pomysły jak ulepszyć stronę ? Odezwij się w zakładce{" "}

@@ -51,6 +51,9 @@ export const Text = styled.p`
   @media (max-width: 526px) {
     margin-left: 0;
   }
+  @media (max-width: 420px) {
+    font-size: 1rem;
+  }
 `;
 export const Author = styled.p`
   font-size: 1.2rem;
@@ -64,6 +67,9 @@ export const Author = styled.p`
   @media (max-width: 768px) {
     margin-left: 0.7rem;
     font-size: 0.9rem;
+  }
+  @media (max-width: 420px) {
+    font-size: 0.8rem;
   }
 `;
 

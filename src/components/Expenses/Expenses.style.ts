@@ -49,6 +49,7 @@ export const Wrapper = styled.div`
   width: 70%;
   height: 80%;
   display: flex;
+  align-items: center;
   flex-direction: column;
   @media (max-width: 1304px) {
     width: 80%;
@@ -87,6 +88,8 @@ export const BigText = styled.div`
   font-size: 3rem;
   width: 80%;
   font-weight: bold;
+  justify-self: center;
+  align-items: center;
   text-align: center;
   margin-bottom: 2rem;
   @media (max-width: 1304px) {
@@ -104,20 +107,28 @@ export const BigText = styled.div`
     font-size: 1.8rem;
     width: 100%;
   }
+  @media (max-width: 500px) {
+    font-size: 1.6rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 1.4rem;
+  }
 `;
 export const MoreText = styled.div`
   font-size: 1rem;
-  width: 80%;
+  width: 50%;
   justify-content: space-around;
   margin-bottom: 0.5rem;
   display: flex;
-  @media (max-width: 1024px) {
+
+  @media (max-width: 986px) {
+  }
+  width: 60%;
+  @media (max-width: 768px) {
+    width: 90%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  @media (max-width: 768px) {
-    font-size: 1rem;
   }
 `;
 
@@ -126,9 +137,11 @@ export const TextWrapper = styled.div`
   padding: 1rem;
   width: 70%;
   @media (max-width: 768px) {
+    margin-bottom: 1.2rem;
     width: 90%;
   }
   @media (max-width: 468px) {
+    margin-bottom: 0rem;
     width: 100%;
   }
 `;
@@ -136,6 +149,12 @@ export const TextWrapper = styled.div`
 export const Title = styled.h2`
   margin-bottom: 1rem;
   text-align: center;
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    @media (max-width: 486px) {
+      margin-bottom: 0.5rem;
+    }
+  }
 `;
 export const Text = styled.p`
   margin-bottom: 0.5rem;

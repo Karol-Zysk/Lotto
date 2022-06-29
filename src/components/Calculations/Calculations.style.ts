@@ -102,6 +102,9 @@ export const InputsContainer = styled.div`
     width: 100%;
     padding: 1rem;
   }
+  @media (max-width: 400px) {
+    padding: 0.5rem;
+  }
 `;
 export const ResultsContainer = styled.div`
   display: flex;
@@ -117,6 +120,9 @@ export const ResultsContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
     position: relative;
+  }
+  @media (max-width: 400px) {
+    padding: 0.5rem;
   }
 `;
 
@@ -141,6 +147,10 @@ export const IconWrapper = styled.div`
   padding: 1rem;
   @media (max-width: 768px) {
     margin-bottom: 1rem;
+  }
+  @media (max-width: 400px) {
+    padding-top : 0;
+    margin-bottom: 0;
   }
 `;
 

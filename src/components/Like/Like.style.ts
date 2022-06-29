@@ -79,6 +79,9 @@ export const ContentWrapper = styled.div`
     width: 100%;
     padding: 1rem 2rem;
   }
+  @media (max-width: 420px) {
+    padding: 0.5rem 1rem;
+  }
 `;
 export const Vote = styled.div`
   justify-content: center;
@@ -162,6 +165,10 @@ export const LikeWrapper = styled.div<LikeProps>`
     width: 8rem;
     margin-bottom: 0;
   }
+  @media (max-width: 420px) {
+    height: 3.5rem;
+    width: 7rem;
+  }
   &:hover {
     transition: 200ms ease-in-out;
     filter: brightness(1);
@@ -182,11 +189,17 @@ export const Thumb = styled(FiThumbsUp)<LikeProps>`
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
+  @media (max-width: 420px) {
+    font-size: 1.4rem;
+  }
 `;
 export const Beer = styled(IoBeerOutline)`
   font-size: 3.5rem;
   @media (max-width: 768px) {
     font-size: 2.2rem;
+  }
+  @media (max-width: 420px) {
+    font-size: 2.05rem;
   }
 `;
 
@@ -226,5 +239,9 @@ export const BeerWrapper = styled.div`
     height: 4rem;
     width: 8rem;
     margin-bottom: 0;
+  }
+  @media (max-width: 420px) {
+    height: 3.5rem;
+    width: 7rem;
   }
 `;

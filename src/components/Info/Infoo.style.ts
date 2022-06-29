@@ -78,6 +78,9 @@ export const ContentWrapper = styled.div`
     width: 100%;
     padding: 1rem 2rem;
   }
+  @media (max-width: 420px) {
+    padding: 1rem 0.5rem;
+  }
 `;
 
 export const Title = styled.p`
@@ -88,6 +91,9 @@ export const Title = styled.p`
   }
   @media (max-width: 960px) {
     font-size: 1.2rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 1.15rem;
   }
 `;
 
@@ -101,6 +107,12 @@ export const Desc = styled.p`
   }
   @media (max-width: 960px) {
     font-size: 0.9rem;
+  }
+  @media (max-width: 960px) {
+    font-size: 0.9rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 0.85rem;
   }
 `;
 
