@@ -13,7 +13,6 @@ import {
 } from "../Calculations.style";
 
 type Props = {
-  errorMsg: string;
   howManyDraws: string;
   setHowManyDraws: Dispatch<SetStateAction<string>>;
   dispatch: React.Dispatch<{
@@ -30,7 +29,6 @@ const Inputs: React.FC<Props> = ({
   howManyDraws,
   userHits,
   handleCalculateResults,
-  errorMsg,
 }) => {
   return (
     <InputsContainer>
@@ -112,8 +110,6 @@ const Inputs: React.FC<Props> = ({
           <Button2 onClick={handleCalculateResults}>Losuj</Button2>
         </BtnWrapper2>
       </DrawWrapper>
-
-      
     </InputsContainer>
   );
 };

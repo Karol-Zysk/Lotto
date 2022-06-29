@@ -2,6 +2,8 @@ import React, { useReducer, useState } from "react";
 //@ts-ignore
 import Random from "random-number-arrays";
 import { findDuplicates } from "../../utils/options";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   innitialArrayState,
   userHitsReducer,
@@ -20,6 +22,7 @@ import {
 } from "./Calculations.style";
 import Expenses from "../Expenses/Expenses";
 import Arrow from "./Parts/Arrow";
+import { notificationEmitter } from "../../utils/notifications";
 
 function Calculations() {
   const [userHits, dispatch] = useReducer(userHitsReducer, innitialArrayState);
@@ -116,17 +119,18 @@ function Calculations() {
       howManyDraws === "0" ||
       howManyDraws === "-"
     ) {
-      setErrorMsg("Uzupełnij Pola Liczbami");
+      notificationEmitter("Uzupełnij Pola Liczbami");
       return;
     } else if (valuesInRange_0_49) {
-      setErrorMsg("Tylko liczby z zakresu 1-49");
+      notificationEmitter("Tylko liczby z zakresu 1-49");
       return;
     } else if (duplicates.length > 0) {
-      setErrorMsg("Conajmniej dwa pola mają ten sam numer");
+      notificationEmitter("Conajmniej dwa pola mają ten sam numer");
       return;
     }
 
     CalculateResults();
+
     setErrorMsg("");
   };
 
@@ -141,6 +145,15 @@ function Calculations() {
   return (
     <>
       <Container id="calculator">
+        <ToastContainer
+          toastStyle={{
+            backgroundColor: "blue",
+            fontSize: "0.9rem",
+            marginTop: "4.5rem",
+            fontWeight: "bold",
+            color: "yellow !important",
+          }}
+        />
         <CalculationsTitle>Symulacja Losowania</CalculationsTitle>
         <Wrapper>
           <Inputs
@@ -149,7 +162,6 @@ function Calculations() {
             dispatch={dispatch}
             userHits={userHits}
             handleCalculateResults={handleCalculateResults}
-            errorMsg={errorMsg}
           />
           <ResultsAndArrow>
             <Results numberOfWins={numberOfWins} clearResults={clearResults} />

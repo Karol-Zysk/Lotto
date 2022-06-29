@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ReactNotifications } from "react-notifications-component";
 import Calculations from "../components/Calculations/Calculations";
 import Footer from "../components/Footer/Footer";
 import Info from "../components/Info/Info";
@@ -19,9 +20,10 @@ const Main = () => {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Intro />
       <Info />
+      <ReactNotifications />
       <Calculations />
       <Like />
-      <Footer/>
+      <Footer />
     </>
   );
 };

@@ -13,6 +13,8 @@ import {
   FormTextArea,
 } from "./Contact.style";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import { notificationEmitter } from "../../utils/notifications";
 
 const Contact = () => {
   const [sent, setSent] = useState<boolean>(false);
@@ -20,27 +22,45 @@ const Contact = () => {
   const [text, setText] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [topic, setTopic] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [err, setErr] = useState<boolean>(false);
 
   const handleSend = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setIsSending(true);
-    const sendTimeout = setTimeout(() => {
-      setSent(true);
-    }, 700);
+
     try {
-      await axios.post("http://localhost:4000/api/send_mail", {
-        text,
-        email,
-        topic,
-      });
+      await axios
+        .post("http://localhost:4000/api/send_mail", {
+          text,
+          email,
+          topic,
+        })
+        .then((data) => {
+          setSent(true);
+        });
     } catch (error) {
-      console.log(error + "z frontu");
+      setErrorMessage(
+        error +
+          " sprawdź połączenie internetowe lub skontaktuj się z zysk.karol.pawel@gmail.com"
+      );
+      setIsSending(false);
+      setErr(true);
+      notificationEmitter(errorMessage);
     }
-    clearTimeout(sendTimeout);
   };
 
   return (
     <Container>
+      <ToastContainer
+        toastStyle={{
+          backgroundColor: "blue",
+          fontSize: "0.9rem",
+          marginTop: "4.5rem",
+          fontWeight: "bold",
+          color: "yellow !important",
+        }}
+      />
       <FormWrap>
         <Icon to="/">Lotto Symulator</Icon>
         <FormContent>
@@ -49,7 +69,7 @@ const Contact = () => {
               <FormH1>Skontaktuj się</FormH1>
               <FormLabel htmlFor="for">Email</FormLabel>
               <FormInput
-                placeholder="bogdan@gmail.com"
+                placeholder="email@gmail.com"
                 type="email"
                 value={email}
                 required
@@ -57,7 +77,7 @@ const Contact = () => {
               ></FormInput>
               <FormLabel htmlFor="for">Temat</FormLabel>
               <FormInput
-              placeholder="temat wiadomości"
+                placeholder="temat wiadomości"
                 type="text"
                 value={topic}
                 required
@@ -65,7 +85,7 @@ const Contact = () => {
               ></FormInput>
               <FormLabel htmlFor="for">Treść...</FormLabel>
               <FormTextArea
-              placeholder="..."
+                placeholder="..."
                 required
                 value={text}
                 onChange={(e) => setText(e.target.value)}
@@ -75,7 +95,7 @@ const Contact = () => {
               </FormButton>
             </Form>
           ) : (
-            <h1>Email Sent</h1>
+            <h1>{err ? errorMessage : "Email Sent"}</h1>
           )}
         </FormContent>
       </FormWrap>
