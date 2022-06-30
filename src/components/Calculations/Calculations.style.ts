@@ -17,8 +17,9 @@ export const Container = styled.div`
   z-index: 0;
   @media (max-width: 768px) {
     /* padding-top: 7rem; */
+
     min-height: 100vh;
-    height: auto;
+    max-height: auto;
   }
 `;
 

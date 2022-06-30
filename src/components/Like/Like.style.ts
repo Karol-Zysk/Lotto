@@ -15,10 +15,7 @@ export const Container = styled.div`
   background-color: blue;
   display: flex;
   z-index: 0;
-  @media screen and (max-width: 768px) {
-    min-height: auto;
-    height: 100vh;
-  }
+  
 `;
 
 export const Wrapper = styled.div`

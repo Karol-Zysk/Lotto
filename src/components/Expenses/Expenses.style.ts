@@ -15,10 +15,7 @@ export const Container = styled.div`
   text-align: left;
   z-index: 0;
   text-shadow: 2px 0px 1px white;
-  @media (max-width: 768px) {
-    min-height: auto;
-    height: 100vh;
-  }
+  
 `;
 
 export const Shape = styled.div`
