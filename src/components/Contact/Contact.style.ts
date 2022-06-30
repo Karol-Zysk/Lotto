@@ -11,8 +11,8 @@ export const Container = styled.div`
   overflow: hidden;
   background: yellow;
   @media screen and (max-width: 768px) {
-    min-height: 100vh;
-    height: auto;
+    min-height: auto;
+    height: 100vh;
   }
 `;
 

@@ -16,8 +16,8 @@ export const Container = styled.div`
   z-index: 0;
   text-shadow: 2px 0px 1px white;
   @media (max-width: 768px) {
-    height: auto;
-    min-height: 100vh;
+    min-height: auto;
+    height: 100vh;
   }
 `;
 

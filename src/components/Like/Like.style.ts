@@ -16,8 +16,8 @@ export const Container = styled.div`
   display: flex;
   z-index: 0;
   @media screen and (max-width: 768px) {
-    min-height: 100vh;
-    height: auto;
+    min-height: auto;
+    height: 100vh;
   }
 `;
 
