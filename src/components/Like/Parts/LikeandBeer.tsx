@@ -10,7 +10,12 @@ import {
   Vote,
 } from "../Like.style";
 
-const LikeandBeer:React.FC<LikeProps> = ({ isLiked, likeCounter, isLoading, leaveLike }) => {
+const LikeandBeer: React.FC<LikeProps> = ({
+  isLiked,
+  likeCounter,
+  isLoading,
+  leaveLike,
+}) => {
   return (
     <Vote>
       <LikeWrapper
@@ -21,20 +26,18 @@ const LikeandBeer:React.FC<LikeProps> = ({ isLiked, likeCounter, isLoading, leav
           <LikeTitle>Loading</LikeTitle>
         ) : (
           <>
+            <div>
+              <LikeTitle>{isLiked ? "Dzięki" : "Like"}</LikeTitle>
+            </div>
             <Flex>
-              <div>
-                <LikeTitle>{isLiked ? "Dzięki" : "Like"}</LikeTitle>
-              </div>
-
+              <LikeTitle>{likeCounter}</LikeTitle>
               <Thumb $isLiked={isLiked} />
             </Flex>
-
-            <LikeTitle>{likeCounter}</LikeTitle>
           </>
         )}
       </LikeWrapper>
 
-      <BeerWrapper
+      {/* <BeerWrapper
         onClick={() =>
           window.open(
             "https://zrzutka.pl/",
@@ -45,7 +48,7 @@ const LikeandBeer:React.FC<LikeProps> = ({ isLiked, likeCounter, isLoading, leav
       >
         <LikeTitle>Postaw Piwo</LikeTitle>
         <Beer />
-      </BeerWrapper>
+      </BeerWrapper> */}
     </Vote>
   );
 };

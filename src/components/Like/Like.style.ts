@@ -157,7 +157,7 @@ export const LikeWrapper = styled.div<LikeProps>`
   font-weight: bold;
   filter: ${({ $isLiked }) =>
     $isLiked ? "brightness(1)" : "brightness(0.85)"};
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   transition: 200ms ease-in-out;
   @media (max-width: 768px) {
     width: 100%;
@@ -183,8 +183,9 @@ export const LinkRR = styled(Link)`
 `;
 
 export const Thumb = styled(FiThumbsUp)<LikeProps>`
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   margin-bottom: 0.2rem;
+  color: ${({ $isLiked }) => ($isLiked ? "gold" : "blue")};
   transform: ${({ $isLiked }) => ($isLiked ? "rotate(-15deg)" : null)};
   @media (max-width: 768px) {
     font-size: 1.5rem;
@@ -205,7 +206,7 @@ export const Beer = styled(IoBeerOutline)`
 
 export const Flex = styled.div`
   display: flex;
-  width: 100%;
+  width: 80%;
   justify-content: space-around;
   align-items: center;
 `;
