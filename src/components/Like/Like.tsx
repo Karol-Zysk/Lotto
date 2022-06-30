@@ -20,14 +20,10 @@ const Like = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const setLikes = async () => {
-    await axios
-      .get(
-        "https://lotto-simulator.herokuapp.com/api/likes/62b373a3092b68073ff23f98"
-      )
-      .then((response) => {
-        setLikeCounter(response.data.count);
-        setIsLoading(false);
-      });
+    await axios.get("/likes/62b373a3092b68073ff23f98").then((response) => {
+      setLikeCounter(response.data.count);
+      setIsLoading(false);
+    });
   };
 
   useEffect(() => {
@@ -46,10 +42,7 @@ const Like = () => {
     setIsLoading(true);
 
     await axios
-      .put(
-        "https://lotto-simulator.herokuapp.com/api/likes/62b373a3092b68073ff23f98",
-        likes
-      )
+      .put("/likes/62b373a3092b68073ff23f98", likes)
       .then((response) => {
         localStorage.setItem("liked", "liked");
         setIsLiked(true);
