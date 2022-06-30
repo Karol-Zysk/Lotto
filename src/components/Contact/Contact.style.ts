@@ -28,6 +28,36 @@ export const FormWrap = styled.div`
   }
 `;
 
+export const SentInfo = styled.div`
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  color: blue;
+  width: 95%;
+  font-weight: bold;
+  @media (max-width: 1304px) {
+    font-size: 2.7rem;
+    width: 90%;
+  }
+  @media (max-width: 1024px) {
+    font-size: 2.4rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    width: 100%;
+  }
+  @media (max-width: 500px) {
+    font-size: 1.8rem;
+    width: 100%;
+  }
+  @media (max-width: 500px) {
+    font-size: 1.6rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 1.4rem;
+  }
+`;
+
 export const Icon = styled(Link)`
   text-decoration: none;
   position: absolute;

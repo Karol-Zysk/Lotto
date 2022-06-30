@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import axios from "../../axios"
 import {
   Container,
   FormWrap,
@@ -11,10 +11,12 @@ import {
   FormInput,
   FormButton,
   FormTextArea,
+  SentInfo,
 } from "./Contact.style";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { notificationEmitter } from "../../utils/notifications";
+import { RiMailSendLine } from "react-icons/ri";
 
 const Contact = () => {
   const [sent, setSent] = useState<boolean>(false);
@@ -22,8 +24,6 @@ const Contact = () => {
   const [text, setText] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [topic, setTopic] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<string>("");
-  const [err, setErr] = useState<boolean>(false);
 
   const handleSend = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ const Contact = () => {
 
     try {
       await axios
-        .post("http://localhost:4000/api/send_mail", {
+        .post("https://lotto-simulator.herokuapp.com/api/send_mail", {
           text,
           email,
           topic,
@@ -40,13 +40,11 @@ const Contact = () => {
           setSent(true);
         });
     } catch (error) {
-      setErrorMessage(
+      notificationEmitter(
         error +
           " sprawdź połączenie internetowe lub skontaktuj się z zysk.karol.pawel@gmail.com"
       );
       setIsSending(false);
-      setErr(true);
-      notificationEmitter(errorMessage);
     }
   };
 
@@ -95,7 +93,10 @@ const Contact = () => {
               </FormButton>
             </Form>
           ) : (
-            <h1>{err ? errorMessage : "Email Sent"}</h1>
+            <SentInfo>
+              {"Email Sent "}
+              <RiMailSendLine style={{ marginLeft: "1rem" }} />
+            </SentInfo>
           )}
         </FormContent>
       </FormWrap>
