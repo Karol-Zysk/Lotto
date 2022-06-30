@@ -32,7 +32,6 @@ function Calculations() {
     innitialWinState
   );
 
-  const [errorMsg, setErrorMsg] = useState<string>("");
 
   //user declares  number of draws then inserting data into RandomDrawOptions
   const [howManyDraws, setHowManyDraws] = useState<string>("1");
@@ -131,7 +130,6 @@ function Calculations() {
 
     CalculateResults();
 
-    setErrorMsg("");
   };
 
   //clearing Results
