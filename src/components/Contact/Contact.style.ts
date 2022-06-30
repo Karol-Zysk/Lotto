@@ -10,6 +10,10 @@ export const Container = styled.div`
   z-index: 0;
   overflow: hidden;
   background: yellow;
+  @media screen and (max-width: 768px) {
+    min-height: 100vh;
+    height: auto;
+  }
 `;
 
 export const FormWrap = styled.div`

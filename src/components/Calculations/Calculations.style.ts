@@ -17,7 +17,8 @@ export const Container = styled.div`
   z-index: 0;
   @media (max-width: 768px) {
     /* padding-top: 7rem; */
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
   }
 `;
 
@@ -149,7 +150,7 @@ export const IconWrapper = styled.div`
     margin-bottom: 1rem;
   }
   @media (max-width: 400px) {
-    padding-top : 0;
+    padding-top: 0;
     margin-bottom: 0;
   }
 `;

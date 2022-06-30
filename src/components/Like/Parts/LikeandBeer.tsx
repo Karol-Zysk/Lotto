@@ -27,7 +27,7 @@ const LikeandBeer: React.FC<LikeProps> = ({
         ) : (
           <>
             <div>
-              <LikeTitle>{isLiked ? "Dzięki" : "Like"}</LikeTitle>
+              <LikeTitle>{isLiked ? "Dzięki !" : "Like"}</LikeTitle>
             </div>
             <Flex>
               <LikeTitle>{likeCounter}</LikeTitle>
