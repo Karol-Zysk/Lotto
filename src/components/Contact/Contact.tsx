@@ -31,7 +31,7 @@ const Contact = () => {
 
     try {
       await axios
-        .post("http://localhost:4000/api/send_mail", {
+        .post("https://lotto-simulator.herokuapp.com/api/send_mail", {
           text,
           email,
           topic,

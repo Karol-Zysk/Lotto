@@ -21,7 +21,9 @@ const Like = () => {
 
   const setLikes = async () => {
     await axios
-      .get("http://localhost:4000/api/likes/62b373a3092b68073ff23f98")
+      .get(
+        "https://lotto-simulator.herokuapp.com/api/likes/62b373a3092b68073ff23f98"
+      )
       .then((response) => {
         setLikeCounter(response.data.count);
         setIsLoading(false);
@@ -44,7 +46,10 @@ const Like = () => {
     setIsLoading(true);
 
     await axios
-      .put("localhost:4000/likes/62b373a3092b68073ff23f98", likes)
+      .put(
+        "https://lotto-simulator.herokuapp.com/api/likes/62b373a3092b68073ff23f98",
+        likes
+      )
       .then((response) => {
         localStorage.setItem("liked", "liked");
         setIsLiked(true);
