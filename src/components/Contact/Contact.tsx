@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "../../axios"
+import axios from "../../axios";
 import {
   Container,
   FormWrap,
@@ -31,7 +31,7 @@ const Contact = () => {
 
     try {
       await axios
-        .post("/send_mail", {
+        .post("http://localhost:4000/api/send_mail", {
           text,
           email,
           topic,
@@ -45,7 +45,7 @@ const Contact = () => {
           " sprawdź połączenie internetowe lub skontaktuj się z zysk.karol.pawel@gmail.com"
       );
       console.log(error);
-      
+
       setIsSending(false);
     }
   };

@@ -14,7 +14,9 @@ export const Container = styled.div`
   z-index: 0;
   @media (max-width: 768px) {
     padding-bottom: 4rem;
+    padding-top: 90px;
     height: 100vh;
+    max-height: 100%;
   }
 `;
 
@@ -33,7 +35,6 @@ export const Wrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 25vh;
   }
 `;
 
