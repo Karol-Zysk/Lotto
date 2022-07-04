@@ -63,6 +63,20 @@ export const SmallShape = styled.div`
     clip-path: circle(4% at 90% 4%);
   }
 `;
+export const SmallShape2 = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  background-color: yellow;
+  z-index: -1;
+  @media (max-width: 768px) {
+    display: block;
+    clip-path: circle(10% at 20% 48%);
+  }
+`;
 
 export const CalculationsTitle = styled.p`
   font-size: 2.1rem;
@@ -193,6 +207,7 @@ export const SystemInputsWrapper = styled.div`
   width: 60%;
   display: flex;
   justify-content: space-between;
+  justify-items: center;
   margin-bottom: 2.2rem;
   @media (max-width: 768px) {
     width: 70%;
@@ -219,8 +234,8 @@ export const Input = styled.input`
   text-align: center;
   border-radius: 8px;
   @media (max-width: 768px) {
-    width: 2.2rem;
-    height: 2.3rem;
+    width: 2rem;
+    height: 2rem;
     font-size: 0.9rem;
   }
 `;
@@ -396,4 +411,39 @@ export const Result = styled.p`
 
 export const Astrix = styled.p`
   margin-top: auto;
+`;
+
+export const Label = styled.label`
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.7rem;
+  color: yellow;
+  text-shadow: 2px 0px 2px black;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const SystemSelect = styled.select`
+  font-size: 1.3rem;
+  font-weight: bold;
+  width: fit-content;
+  margin-bottom: 1.2rem;
+  @media (max-width: 1180px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 960px) {
+    font-size: 1.3rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+`;
+
+export const Option = styled.option`
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: min-content;
+  }
 `;

@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { IState } from "../../../utils/userArrayReducer";
+import { IState, systemTypes } from "../../../../type";
 import {
   BtnWrapper2,
   Button2,
@@ -8,10 +8,13 @@ import {
   Input,
   InputsContainer,
   InputsText,
-  InputsWrapper,
-  SystemInputsWrapper,
+  Label,
+  Option,
+  SystemSelect,
   TextWrapper,
 } from "../Calculations.style";
+import RegularInputs from "./RegularInputs";
+import SystemInputs from "./SystemInputs";
 
 type Props = {
   howManyDraws: string;
@@ -22,6 +25,8 @@ type Props = {
   }>;
   userHits: IState;
   handleCalculateResults: React.MouseEventHandler<HTMLButtonElement>;
+  system: systemTypes;
+  setSystem: React.Dispatch<React.SetStateAction<systemTypes>>;
 };
 
 const Inputs: React.FC<Props> = ({
@@ -30,7 +35,12 @@ const Inputs: React.FC<Props> = ({
   howManyDraws,
   userHits,
   handleCalculateResults,
+  system,
+  setSystem,
 }) => {
+  //hits object to array
+  const userHitsArr: any = Object.values(userHits);
+
 
   return (
     <InputsContainer>
@@ -38,118 +48,33 @@ const Inputs: React.FC<Props> = ({
         <TextWrapper>
           <InputsText>1. Wpisz 6 liczb z zakresu 1-49</InputsText>
         </TextWrapper>
-        <InputsWrapper>
-          <Input
-            value={userHits.hitOne}
-            min="1"
-            max="49"
-            type="number"
-            onChange={(event) =>
-              dispatch({ type: "SET_HIT_ONE", payload: event.target.value })
-            }
-          />
-          <Input
-            value={userHits.hitTwo}
-            min="1"
-            max="49"
-            type="number"
-            onChange={(event) =>
-              dispatch({ type: "SET_HIT_TWO", payload: event.target.value })
-            }
-          />
-          <Input
-            value={userHits.hitThree}
-            min="1"
-            max="49"
-            type="number"
-            onChange={(event) =>
-              dispatch({ type: "SET_HIT_THREE", payload: event.target.value })
-            }
-          />
-          <Input
-            value={userHits.hitFour}
-            min="1"
-            max="49"
-            type="number"
-            onChange={(event) =>
-              dispatch({ type: "SET_HIT_FOUR", payload: event.target.value })
-            }
-          />
-          <Input
-            value={userHits.hitFive}
-            min="1"
-            max="49"
-            type="number"
-            onChange={(event) =>
-              dispatch({ type: "SET_HIT_FIVE", payload: event.target.value })
-            }
-          />
-          <Input
-            value={userHits.hitSix}
-            min="1"
-            max="49"
-            type="number"
-            onChange={(event) =>
-              dispatch({ type: "SET_HIT_SIX", payload: event.target.value })
-            }
-          />
-        </InputsWrapper>
-        <SystemInputsWrapper>
-          <Input
-            value={userHits.hitSeven}
-            min="1"
-            max="49"
-            type="number"
-            onChange={(event) =>
-              dispatch({ type: "SET_HIT_SEVEN", payload: event.target.value })
-            }
-          />
-          <Input
-            value={userHits.hitEight}
-            min="1"
-            max="49"
-            type="number"
-            onChange={(event) =>
-              dispatch({ type: "SET_HIT_EIGHT", payload: event.target.value })
-            }
-          />
-          <Input
-            value={userHits.hitNine}
-            min="1"
-            max="49"
-            type="number"
-            onChange={(event) =>
-              dispatch({ type: "SET_HIT_NINE", payload: event.target.value })
-            }
-          />
-          <Input
-            value={userHits.hitTen}
-            min="1"
-            max="49"
-            type="number"
-            onChange={(event) =>
-              dispatch({ type: "SET_HIT_TEN", payload: event.target.value })
-            }
-          />
-          <Input
-            value={userHits.hitEleven}
-            min="1"
-            max="49"
-            type="number"
-            onChange={(event) =>
-              dispatch({ type: "SET_HIT_ELEVEN", payload: event.target.value })
-            }
-          />
-          <Input
-            value={userHits.hitTwelve}
-            min="1"
-            max="49"
-            type="number"
-            onChange={(event) =>
-              dispatch({ type: "SET_HIT_TWELVE", payload: event.target.value })
-            }
-          />
-        </SystemInputsWrapper>
+        <Label htmlFor="SYSTEM">Wybierz system</Label>
+        <SystemSelect
+          onChange={(e) => {
+            setSystem(parseInt(e.target.value));
+
+          }}
+          name="systemSelect"
+          id="system"
+          form="System"
+        >
+          <Option value={6}>Bez Systemu</Option>
+          <Option value={7}>System 7</Option>
+          <Option value={8}>System 8</Option>
+          <Option value={9}>System 9</Option>
+          <Option value={10}>System 10</Option>
+          <Option value={11}>System 11</Option>
+          <Option value={12}>System 12</Option>
+        </SystemSelect>
+        <RegularInputs
+          userHitsArr={userHitsArr.slice(0, 6)}
+          dispatch={dispatch}
+        />
+        <SystemInputs
+          system={system}
+          userHitsArr={userHitsArr.slice(6, system)}
+          dispatch={dispatch}
+        />
       </HitsWrapper>
       <DrawWrapper>
         <TextWrapper>

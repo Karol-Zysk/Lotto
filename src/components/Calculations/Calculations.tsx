@@ -18,6 +18,7 @@ import {
   Shape,
   Shape1,
   SmallShape,
+  SmallShape2,
   Wrapper,
 } from "./Calculations.style";
 import Expenses from "../Expenses/Expenses";
@@ -27,19 +28,18 @@ import { systemTypes } from "../../../type";
 
 function Calculations() {
   const [userHits, dispatch] = useReducer(userHitsReducer, innitialArrayState);
-  const [system, setSystem] = useState<systemTypes>(6);
-
   const [numberOfWins, dispatchWins] = useReducer(
     WinsReducer,
     innitialWinState
   );
 
-  
+  const [system, setSystem] = useState<systemTypes>(6);
+
   //user declares  number of draws then inserting data into RandomDrawOptions
   const [howManyDraws, setHowManyDraws] = useState<string>("1");
 
   //User shots
-  const myArr: number[] = [
+  const mySystemArr: number[] = [
     parseInt(userHits.hitOne),
     parseInt(userHits.hitTwo),
     parseInt(userHits.hitThree),
@@ -51,6 +51,9 @@ function Calculations() {
     parseInt(userHits.hitNine),
     parseInt(userHits.hitTen),
   ];
+
+  // User Shots after system
+  const myArr = mySystemArr.slice(0, system);
 
   let RandomDrawOptions = {
     min: 1,
@@ -120,6 +123,7 @@ function Calculations() {
     const duplicates: number[] = findDuplicates(myArr);
     if (
       myArr.includes(NaN) ||
+      userHits.hasOwnProperty("") ||
       howManyDraws === "" ||
       howManyDraws === "0" ||
       howManyDraws === "-"
@@ -160,6 +164,8 @@ function Calculations() {
         <CalculationsTitle>Symulacja Losowania</CalculationsTitle>
         <Wrapper>
           <Inputs
+            setSystem={setSystem}
+            system={system}
             howManyDraws={howManyDraws}
             setHowManyDraws={setHowManyDraws}
             dispatch={dispatch}
@@ -174,6 +180,7 @@ function Calculations() {
         <Shape1 />
         <Shape />
         <SmallShape />
+        <SmallShape2 />
       </Container>
       <Expenses numberOfWins={numberOfWins} />
     </>

@@ -1,5 +1,5 @@
-import { systemTypes } from "../../../../type";
-import { Input, SystemInputsWrapper } from "../Calculations.style";
+import React from "react";
+import { Input, InputsWrapper } from "../Calculations.style";
 
 type InputsProps = {
   userHitsArr: [];
@@ -7,28 +7,23 @@ type InputsProps = {
     type: any;
     payload: string;
   }>;
-  system: systemTypes;
 };
 
 const inputValues = [
-  "SET_HIT_SEVEN",
-  "SET_HIT_EIGHT",
-  "SET_HIT_NINE",
-  "SET_HIT_TEN",
-  "SET_HIT_ELEVEN",
-  "SET_HIT_TWELVE",
+  "SET_HIT_ONE",
+  "SET_HIT_TWO",
+  "SET_HIT_THREE",
+  "SET_HIT_FOUR",
+  "SET_HIT_FIVE",
+  "SET_HIT_SIX",
 ];
 
-const SystemInputs: React.FC<InputsProps> = ({
-  userHitsArr,
-  dispatch,
-}) => {
-  console.log(userHitsArr);
-  
+const RegularInputs: React.FC<InputsProps> = ({ userHitsArr, dispatch }) => {
 
   return (
-    <SystemInputsWrapper>
+    <InputsWrapper>
       {userHitsArr.map((hit, index) => {
+
         return (
           <Input
             value={hit}
@@ -44,8 +39,8 @@ const SystemInputs: React.FC<InputsProps> = ({
           />
         );
       })}
-    </SystemInputsWrapper>
+    </InputsWrapper>
   );
 };
 
-export default SystemInputs;
+export default RegularInputs;

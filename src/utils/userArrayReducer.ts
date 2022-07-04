@@ -1,20 +1,8 @@
 //@ts-ignore
 import Random from "random-number-arrays";
+import { IState } from "../../type";
 
-export type IState = {
-  hitOne: string;
-  hitTwo: string;
-  hitThree: string;
-  hitFour: string;
-  hitFive: string;
-  hitSix: string;
-  hitSeven: string;
-  hitEight: string;
-  hitNine: string;
-  hitTen: string;
-  hitEleven: string;
-  hitTwelve: string;
-};
+
 
 export const userHitsReducer = (
   state: IState,
