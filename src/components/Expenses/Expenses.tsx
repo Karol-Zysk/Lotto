@@ -18,9 +18,11 @@ import {
 
 type Props = {
   numberOfWins: WinsState;
+  price: number;
 };
 
 const Expenses: React.FC<Props> = ({
+  price,
   numberOfWins: { draws, fives, fours, threes, sixes },
 }) => {
   const [moreInfo, setMoreInfo] = useState<boolean>(false);
@@ -31,7 +33,7 @@ const Expenses: React.FC<Props> = ({
   const sixPay = sixes * 5600000;
   const sumOfWins = threePay + fourPay + fivePay + sixPay;
 
-  const moneySpent = draws * 4;
+  const moneySpent = draws * price;
 
   const balance = sumOfWins - moneySpent;
 

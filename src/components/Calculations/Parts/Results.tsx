@@ -18,6 +18,7 @@ import {
 type Props = {
   numberOfWins: WinsState;
   clearResults: React.MouseEventHandler<HTMLButtonElement>;
+  
 };
 
 const Results: React.FC<Props> = ({

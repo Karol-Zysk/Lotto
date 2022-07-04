@@ -4,6 +4,8 @@ import {
   BtnWrapper2,
   Button2,
   DrawWrapper,
+  Flex,
+  HitPrice,
   HitsWrapper,
   Input,
   InputsContainer,
@@ -27,6 +29,7 @@ type Props = {
   handleCalculateResults: React.MouseEventHandler<HTMLButtonElement>;
   system: systemTypes;
   setSystem: React.Dispatch<React.SetStateAction<systemTypes>>;
+  price: number;
 };
 
 const Inputs: React.FC<Props> = ({
@@ -37,10 +40,10 @@ const Inputs: React.FC<Props> = ({
   handleCalculateResults,
   system,
   setSystem,
+  price,
 }) => {
   //hits object to array
   const userHitsArr: any = Object.values(userHits);
-
 
   return (
     <InputsContainer>
@@ -49,23 +52,26 @@ const Inputs: React.FC<Props> = ({
           <InputsText>1. Wpisz 6 liczb z zakresu 1-49</InputsText>
         </TextWrapper>
         <Label htmlFor="SYSTEM">Wybierz system</Label>
-        <SystemSelect
-          onChange={(e) => {
-            setSystem(parseInt(e.target.value));
+        <Flex>
+          <SystemSelect
+            onChange={(e) => {
+              setSystem(parseInt(e.target.value));
+            }}
+            name="systemSelect"
+            id="system"
+            form="System"
+          >
+            <Option value={6}>Bez Systemu</Option>
+            <Option value={7}>System 7</Option>
+            <Option value={8}>System 8</Option>
+            <Option value={9}>System 9</Option>
+            <Option value={10}>System 10</Option>
+            <Option value={11}>System 11</Option>
+            <Option value={12}>System 12</Option>
+          </SystemSelect>
+          <HitPrice>Cena Losu: {price} zł</HitPrice>
+        </Flex>
 
-          }}
-          name="systemSelect"
-          id="system"
-          form="System"
-        >
-          <Option value={6}>Bez Systemu</Option>
-          <Option value={7}>System 7</Option>
-          <Option value={8}>System 8</Option>
-          <Option value={9}>System 9</Option>
-          <Option value={10}>System 10</Option>
-          <Option value={11}>System 11</Option>
-          <Option value={12}>System 12</Option>
-        </SystemSelect>
         <RegularInputs
           userHitsArr={userHitsArr.slice(0, 6)}
           dispatch={dispatch}

@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 //@ts-ignore
 import Random from "random-number-arrays";
 import { findDuplicates } from "../../utils/options";
@@ -34,6 +34,31 @@ function Calculations() {
   );
 
   const [system, setSystem] = useState<systemTypes>(6);
+  const [price, setSprice] = useState<number>(4);
+
+  useEffect(() => {
+    if (system === 6) {
+      setSprice(4);
+    }
+    if (system === 7) {
+      setSprice(21);
+    }
+    if (system === 8) {
+      setSprice(84);
+    }
+    if (system === 9) {
+      setSprice(252);
+    }
+    if (system === 10) {
+      setSprice(630);
+    }
+    if (system === 11) {
+      setSprice(1386);
+    }
+    if (system === 12) {
+      setSprice(2772);
+    }
+  }, [system]);
 
   //user declares  number of draws then inserting data into RandomDrawOptions
   const [howManyDraws, setHowManyDraws] = useState<string>("1");
@@ -164,6 +189,7 @@ function Calculations() {
         <CalculationsTitle>Symulacja Losowania</CalculationsTitle>
         <Wrapper>
           <Inputs
+            price={price}
             setSystem={setSystem}
             system={system}
             howManyDraws={howManyDraws}
@@ -173,7 +199,8 @@ function Calculations() {
             handleCalculateResults={handleCalculateResults}
           />
           <ResultsAndArrow>
-            <Results numberOfWins={numberOfWins} clearResults={clearResults} />
+            <Results
+             numberOfWins={numberOfWins} clearResults={clearResults} />
           </ResultsAndArrow>
         </Wrapper>
         <Arrow path="expenses" text="Podsumowanie" />
@@ -182,7 +209,7 @@ function Calculations() {
         <SmallShape />
         <SmallShape2 />
       </Container>
-      <Expenses numberOfWins={numberOfWins} />
+      <Expenses  price={price} numberOfWins={numberOfWins} />
     </>
   );
 }

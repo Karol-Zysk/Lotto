@@ -447,3 +447,28 @@ export const Option = styled.option`
     width: min-content;
   }
 `;
+
+export const Flex = styled.div`
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+export const HitPrice = styled.p`
+  font-size: 1.5rem;
+  color: yellow;
+  margin-right: 2rem;
+  margin-bottom: 1.2rem;
+  font-weight: bold;
+  text-shadow: 2px 0px 2px black;
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: blue;
+    text-shadow: none;
+    margin-right: 0rem;
+  }
+`;
