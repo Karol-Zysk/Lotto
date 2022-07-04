@@ -18,5 +18,12 @@ export type LikeProps = {
   leaveLike: () => Promise<void>;
 };
 
-
-
+export enum systemTypes {
+  systemSix = 6,
+  systemSeven = 7,
+  systemEight = 8,
+  systemNine = 9,
+  systemTen = 10,
+  systemEleven = 11,
+  systemTwelve = 12,
+}

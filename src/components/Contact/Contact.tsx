@@ -44,7 +44,6 @@ const Contact = () => {
         error +
           " sprawdź połączenie internetowe lub skontaktuj się z zysk.karol.pawel@gmail.com"
       );
-      console.log(error);
 
       setIsSending(false);
     }

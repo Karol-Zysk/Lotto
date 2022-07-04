@@ -9,6 +9,7 @@ import {
   InputsContainer,
   InputsText,
   InputsWrapper,
+  SystemInputsWrapper,
   TextWrapper,
 } from "../Calculations.style";
 
@@ -30,6 +31,7 @@ const Inputs: React.FC<Props> = ({
   userHits,
   handleCalculateResults,
 }) => {
+
   return (
     <InputsContainer>
       <HitsWrapper>
@@ -92,6 +94,62 @@ const Inputs: React.FC<Props> = ({
             }
           />
         </InputsWrapper>
+        <SystemInputsWrapper>
+          <Input
+            value={userHits.hitSeven}
+            min="1"
+            max="49"
+            type="number"
+            onChange={(event) =>
+              dispatch({ type: "SET_HIT_SEVEN", payload: event.target.value })
+            }
+          />
+          <Input
+            value={userHits.hitEight}
+            min="1"
+            max="49"
+            type="number"
+            onChange={(event) =>
+              dispatch({ type: "SET_HIT_EIGHT", payload: event.target.value })
+            }
+          />
+          <Input
+            value={userHits.hitNine}
+            min="1"
+            max="49"
+            type="number"
+            onChange={(event) =>
+              dispatch({ type: "SET_HIT_NINE", payload: event.target.value })
+            }
+          />
+          <Input
+            value={userHits.hitTen}
+            min="1"
+            max="49"
+            type="number"
+            onChange={(event) =>
+              dispatch({ type: "SET_HIT_TEN", payload: event.target.value })
+            }
+          />
+          <Input
+            value={userHits.hitEleven}
+            min="1"
+            max="49"
+            type="number"
+            onChange={(event) =>
+              dispatch({ type: "SET_HIT_ELEVEN", payload: event.target.value })
+            }
+          />
+          <Input
+            value={userHits.hitTwelve}
+            min="1"
+            max="49"
+            type="number"
+            onChange={(event) =>
+              dispatch({ type: "SET_HIT_TWELVE", payload: event.target.value })
+            }
+          />
+        </SystemInputsWrapper>
       </HitsWrapper>
       <DrawWrapper>
         <TextWrapper>

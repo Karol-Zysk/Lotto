@@ -8,9 +8,18 @@ export type IState = {
   hitFour: string;
   hitFive: string;
   hitSix: string;
+  hitSeven: string;
+  hitEight: string;
+  hitNine: string;
+  hitTen: string;
+  hitEleven: string;
+  hitTwelve: string;
 };
 
-export const userHitsReducer = (state: IState, action: { type: any; payload: string }) => {
+export const userHitsReducer = (
+  state: IState,
+  action: { type: any; payload: string }
+) => {
   switch (action.type) {
     case "SET_HIT_ONE":
       return {
@@ -18,7 +27,6 @@ export const userHitsReducer = (state: IState, action: { type: any; payload: str
         hitOne: action.payload,
       };
     case "SET_HIT_TWO":
-
       return {
         ...state,
         hitTwo: action.payload,
@@ -42,6 +50,36 @@ export const userHitsReducer = (state: IState, action: { type: any; payload: str
       return {
         ...state,
         hitSix: action.payload,
+      };
+    case "SET_HIT_SEVEN":
+      return {
+        ...state,
+        hitSeven: action.payload,
+      };
+    case "SET_HIT_EIGHT":
+      return {
+        ...state,
+        hitEight: action.payload,
+      };
+    case "SET_HIT_NINE":
+      return {
+        ...state,
+        hitNine: action.payload,
+      };
+    case "SET_HIT_TEN":
+      return {
+        ...state,
+        hitTen: action.payload,
+      };
+    case "SET_HIT_ELEVEN":
+      return {
+        ...state,
+        hitEleven: action.payload,
+      };
+    case "SET_HIT_TWELVE":
+      return {
+        ...state,
+        hitTwelve: action.payload,
       };
     default:
       return state;
@@ -67,4 +105,10 @@ export const innitialArrayState = {
   hitFour: innitialArray[3],
   hitFive: innitialArray[4],
   hitSix: innitialArray[5],
+  hitSeven: innitialArray[6],
+  hitEight: innitialArray[7],
+  hitNine: innitialArray[8],
+  hitTen: innitialArray[9],
+  hitEleven: innitialArray[10],
+  hitTwelve: innitialArray[11],
 };

@@ -189,6 +189,19 @@ export const InputsWrapper = styled.div`
     width: 90%;
   }
 `;
+export const SystemInputsWrapper = styled.div`
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.2rem;
+  @media (max-width: 768px) {
+    width: 70%;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 500px) {
+    width: 90%;
+  }
+`;
 export const ResultsWrapper = styled.div`
   margin-bottom: 2.2rem;
   color: yellow;

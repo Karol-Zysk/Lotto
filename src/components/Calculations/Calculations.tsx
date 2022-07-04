@@ -23,16 +23,18 @@ import {
 import Expenses from "../Expenses/Expenses";
 import Arrow from "./Parts/Arrow";
 import { notificationEmitter } from "../../utils/notifications";
+import { systemTypes } from "../../../type";
 
 function Calculations() {
   const [userHits, dispatch] = useReducer(userHitsReducer, innitialArrayState);
+  const [system, setSystem] = useState<systemTypes>(6);
 
   const [numberOfWins, dispatchWins] = useReducer(
     WinsReducer,
     innitialWinState
   );
 
-
+  
   //user declares  number of draws then inserting data into RandomDrawOptions
   const [howManyDraws, setHowManyDraws] = useState<string>("1");
 
@@ -44,6 +46,10 @@ function Calculations() {
     parseInt(userHits.hitFour),
     parseInt(userHits.hitFive),
     parseInt(userHits.hitSix),
+    parseInt(userHits.hitSeven),
+    parseInt(userHits.hitEight),
+    parseInt(userHits.hitNine),
+    parseInt(userHits.hitTen),
   ];
 
   let RandomDrawOptions = {
@@ -90,7 +96,7 @@ function Calculations() {
           payload: 1,
         });
 
-        console.log(
+        alert(
           `Gratulacje! Trafiłeś 6 w losowaniu nr ${
             numberOfWins.draws + index
           }, czwórki: ${numberOfWins.fours}`
@@ -129,7 +135,6 @@ function Calculations() {
     }
 
     CalculateResults();
-
   };
 
   //clearing Results
