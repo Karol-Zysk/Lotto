@@ -1,4 +1,4 @@
-import styled from "styled-components";
+Bugimport styled from "styled-components";
 import { CgArrowDownO } from "react-icons/cg";
 import { Link } from "react-scroll";
 
@@ -74,7 +74,7 @@ export const SmallShape2 = styled.div`
   z-index: -1;
   @media (max-width: 768px) {
     display: block;
-    clip-path: circle(14% at 21% 45%);
+    clip-path: circle(14% at 25% 45%);
   }
 `;
 
@@ -465,7 +465,7 @@ export const HitPrice = styled.p`
   font-weight: bold;
   text-shadow: 2px 0px 2px black;
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 0.85rem;
     margin-bottom: 0.8rem;
     color: blue;
     text-shadow: none;
