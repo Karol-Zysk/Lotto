@@ -74,7 +74,7 @@ export const SmallShape2 = styled.div`
   z-index: -1;
   @media (max-width: 768px) {
     display: block;
-    clip-path: circle(10% at 20% 48%);
+    clip-path: circle(14% at 21% 45%);
   }
 `;
 
