@@ -95,7 +95,7 @@ const Contact = () => {
             </Form>
           ) : (
             <SentInfo>
-              {"Email Sent "}
+              {"Poszło.. "}
               <RiMailSendLine style={{ marginLeft: "1rem" }} />
             </SentInfo>
           )}
