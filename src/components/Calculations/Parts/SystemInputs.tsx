@@ -19,18 +19,13 @@ const inputValues = [
   "SET_HIT_TWELVE",
 ];
 
-const SystemInputs: React.FC<InputsProps> = ({
-  userHitsArr,
-  dispatch,
-}) => {
-  console.log(userHitsArr);
-  
-
+const SystemInputs: React.FC<InputsProps> = ({ userHitsArr, dispatch }) => {
   return (
     <SystemInputsWrapper>
       {userHitsArr.map((hit, index) => {
         return (
           <Input
+            key={index}
             value={hit}
             min="1"
             max="49"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { WinsState } from "../../utils/numberOfWinsReducer";
 import { numberWithCommas } from "../../utils/options";
 import {
@@ -14,7 +14,15 @@ import {
   TextWrapper,
   Title,
   Wrapper,
+  AsteriskIcon,
+  Assumptions,
+  AssumptionsTitle,
+  AssumptionsText,
 } from "./Expenses.style";
+import Modal from "react-modal";
+import { customStyles } from "../Calculations/Calculations.style";
+
+
 
 type Props = {
   numberOfWins: WinsState;
@@ -26,6 +34,15 @@ const Expenses: React.FC<Props> = ({
   numberOfWins: { draws, fives, fours, threes, sixes },
 }) => {
   const [moreInfo, setMoreInfo] = useState<boolean>(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   const threePay = threes * 24;
   const fourPay = fours * 170;
@@ -39,23 +56,44 @@ const Expenses: React.FC<Props> = ({
 
   return (
     <Container id="expenses">
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <Assumptions>
+          <AssumptionsTitle>Założenia</AssumptionsTitle>
+          <AssumptionsText>Wygrana za trójkę to 24zł</AssumptionsText>
+          <AssumptionsText>
+            Średnia wygrana za czwórkę z ostatnich 100 losowań to 170zł
+          </AssumptionsText>
+          <AssumptionsText>
+            Średnia wygrana za piątkę z ostatnich 100 losowań to 5300zł
+          </AssumptionsText>
+          <AssumptionsText>
+            Średnia wygrana za szóstkę z roku 2022 to 5.6mln zł
+          </AssumptionsText>
+        </Assumptions>
+      </Modal>
       <Shape />
       <Shape1 />
       <Wrapper>
         <GainsAndLoses>
           <BigText>
+            {" "}
             {draws === 0 ? (
               <>
-                <p>Zagraj i sprawdź</p>
-                <p>zyskasz czy stracisz?</p>{" "}
+                Zagraj i sprawdź<br></br> zyskasz czy stracisz?{" "}
               </>
             ) : draws !== 0 && balance === 0 ? (
               "wychodzisz na zero"
             ) : balance < 0 ? (
-              `Straciłeś: ${numberWithCommas(Math.abs(balance))} zł`
+              `Straciłeś/aś: ${numberWithCommas(Math.abs(balance))} zł`
             ) : (
               `Wow. Jesteś do przodu o: ${numberWithCommas(balance)} zł`
-            )}
+            )}{" "}
+            <AsteriskIcon onClick={openModal} />
           </BigText>
           <ButtonBlue onClick={() => setMoreInfo(!moreInfo)}>
             {!moreInfo ? "Więcej Informacji" : "Mniej Informacji"}
@@ -68,7 +106,7 @@ const Expenses: React.FC<Props> = ({
                   <Text>{numberWithCommas(moneySpent)} zł</Text>
                 </TextWrapper>
                 <TextWrapper>
-                  <Title>Wygrałeś</Title>
+                  <Title>Wygrałeś/aś</Title>
                   <Text>trójki: {numberWithCommas(threePay)} zł </Text>
                   <Text>czwórki: {numberWithCommas(fourPay)} zł</Text>
                   <Text>piątki: {numberWithCommas(fivePay)} zł</Text>
@@ -80,20 +118,6 @@ const Expenses: React.FC<Props> = ({
               </>
             )}
           </MoreText>
-
-          {/* <Assumptions>
-            <AssumptionsTitle>Założenia</AssumptionsTitle>
-            <AssumptionsText>Wygrana za trójkę to 24zł</AssumptionsText>
-            <AssumptionsText>
-              Średnia wygrana za czwórkę z ostatnich 100 losowań to 170zł
-            </AssumptionsText>
-            <AssumptionsText>
-              Średnia wygrana za piątkę z ostatnich 100 losowań to 5300zł
-            </AssumptionsText>
-            <AssumptionsText>
-              Średnia wygrana za szóstkę z roku 2022 to 5.6mln zł
-            </AssumptionsText>
-          </Assumptions> */}
         </GainsAndLoses>
       </Wrapper>
     </Container>

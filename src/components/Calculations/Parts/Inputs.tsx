@@ -4,19 +4,15 @@ import {
   BtnWrapper2,
   Button2,
   DrawWrapper,
-  Flex,
-  HitPrice,
   HitsWrapper,
   Input,
   InputsContainer,
   InputsText,
-  Label,
-  Option,
-  SystemSelect,
   TextWrapper,
 } from "../Calculations.style";
 import RegularInputs from "./RegularInputs";
 import SystemInputs from "./SystemInputs";
+import SystemSelect from "./SystemSelect";
 
 type Props = {
   howManyDraws: string;
@@ -51,27 +47,7 @@ const Inputs: React.FC<Props> = ({
         <TextWrapper>
           <InputsText>1. Wpisz 6 liczb z zakresu 1-49</InputsText>
         </TextWrapper>
-        <Label htmlFor="SYSTEM">Wybierz system</Label>
-        <Flex>
-          <SystemSelect
-            onChange={(e) => {
-              setSystem(parseInt(e.target.value));
-            }}
-            name="systemSelect"
-            id="system"
-            form="System"
-          >
-            <Option value={6}>Bez Systemu</Option>
-            <Option value={7}>System 7</Option>
-            <Option value={8}>System 8</Option>
-            <Option value={9}>System 9</Option>
-            <Option value={10}>System 10</Option>
-            <Option value={11}>System 11</Option>
-            <Option value={12}>System 12</Option>
-          </SystemSelect>
-          <HitPrice>Cena Losu: {price} zł</HitPrice>
-        </Flex>
-
+        <SystemSelect price={price} setSystem={setSystem} />
         <RegularInputs
           userHitsArr={userHitsArr.slice(0, 6)}
           dispatch={dispatch}

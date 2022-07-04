@@ -19,13 +19,12 @@ const inputValues = [
 ];
 
 const RegularInputs: React.FC<InputsProps> = ({ userHitsArr, dispatch }) => {
-
   return (
     <InputsWrapper>
       {userHitsArr.map((hit, index) => {
-
         return (
           <Input
+            key={inputValues[index]}
             value={hit}
             min="1"
             max="49"

@@ -424,7 +424,7 @@ export const Label = styled.label`
   }
 `;
 
-export const SystemSelect = styled.select`
+export const Select = styled.select`
   font-size: 1.3rem;
   font-weight: bold;
   width: fit-content;
@@ -472,3 +472,40 @@ export const HitPrice = styled.p`
     margin-right: 0rem;
   }
 `;
+export const WinText = styled.p`
+  text-align: center;
+  font-size: 2.7rem;
+  margin-bottom: 1rem;
+  color: yellow;
+  font-weight: bold;
+  text-shadow: 2px 0px 2px black;
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+`;
+export const WinSubText = styled.p`
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: yellow;
+  font-weight: bold;
+  text-shadow: 2px 0px 2px black;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+`;
+
+export const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    backgroundColor: "#0000ffeb",
+    color: "yellow",
+    transform: "translate(-50%, -50%)",
+    border: "2px solid yellow",
+    borderRadius: "10px",
+  },
+};

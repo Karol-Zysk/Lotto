@@ -42,3 +42,7 @@ export type IState = {
   hitEleven: string;
   hitTwelve: string;
 };
+
+export type ISubtitle = {
+  subtitle: HTMLHeadingElement | null
+}

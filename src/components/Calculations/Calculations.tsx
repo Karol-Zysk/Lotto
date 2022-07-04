@@ -14,17 +14,22 @@ import Results from "./Parts/Results";
 import {
   CalculationsTitle,
   Container,
+  customStyles,
   ResultsAndArrow,
   Shape,
   Shape1,
   SmallShape,
   SmallShape2,
+  WinSubText,
+  WinText,
   Wrapper,
 } from "./Calculations.style";
 import Expenses from "../Expenses/Expenses";
 import Arrow from "./Parts/Arrow";
 import { notificationEmitter } from "../../utils/notifications";
 import { systemTypes } from "../../../type";
+import Modal from "react-modal";
+import { AnimatePresence } from "framer-motion";
 
 function Calculations() {
   const [userHits, dispatch] = useReducer(userHitsReducer, innitialArrayState);
@@ -35,6 +40,17 @@ function Calculations() {
 
   const [system, setSystem] = useState<systemTypes>(6);
   const [price, setSprice] = useState<number>(4);
+
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const [win, setWin] = useState<number>(0);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   useEffect(() => {
     if (system === 6) {
@@ -75,6 +91,8 @@ function Calculations() {
     parseInt(userHits.hitEight),
     parseInt(userHits.hitNine),
     parseInt(userHits.hitTen),
+    parseInt(userHits.hitEleven),
+    parseInt(userHits.hitTwelve),
   ];
 
   // User Shots after system
@@ -124,11 +142,8 @@ function Calculations() {
           payload: 1,
         });
 
-        alert(
-          `Gratulacje! Trafiłeś 6 w losowaniu nr ${
-            numberOfWins.draws + index
-          }, czwórki: ${numberOfWins.fours}`
-        );
+        setWin(numberOfWins.draws + index);
+        openModal();
 
         return 0;
       }
@@ -177,6 +192,15 @@ function Calculations() {
   return (
     <>
       <Container id="calculator">
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+          <WinText>Gratulacje!</WinText>{" "}
+          <WinSubText>Trafiłeś/aś 6 w losowaniu nr: {win}</WinSubText>
+        </Modal>
         <ToastContainer
           toastStyle={{
             backgroundColor: "blue",
@@ -199,8 +223,7 @@ function Calculations() {
             handleCalculateResults={handleCalculateResults}
           />
           <ResultsAndArrow>
-            <Results
-             numberOfWins={numberOfWins} clearResults={clearResults} />
+            <Results numberOfWins={numberOfWins} clearResults={clearResults} />
           </ResultsAndArrow>
         </Wrapper>
         <Arrow path="expenses" text="Podsumowanie" />
@@ -209,7 +232,7 @@ function Calculations() {
         <SmallShape />
         <SmallShape2 />
       </Container>
-      <Expenses  price={price} numberOfWins={numberOfWins} />
+      <Expenses price={price} numberOfWins={numberOfWins} />
     </>
   );
 }

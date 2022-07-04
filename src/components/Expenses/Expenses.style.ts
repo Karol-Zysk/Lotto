@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { CgAsterisk } from "react-icons/cg";
 
 export const Container = styled.div`
   width: 100%;
@@ -81,14 +82,27 @@ export const GainsAndLoses = styled.div`
 export const Assumptions = styled.div`
   padding: 1rem;
   margin-top: auto;
+
+  text-shadow: 2px 0px 1px black;
+
+  @media (max-width: 768px) {
+    padding: 0rem;
+  }
 `;
 export const AssumptionsText = styled.p`
-  font-size: 0.7rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
 `;
 export const AssumptionsTitle = styled.p`
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 export const BigText = styled.div`
   font-size: 3rem;
@@ -192,5 +206,15 @@ export const ButtonBlue = styled.button`
     color: yellow;
     background-color: blue;
     border: 3px solid yellow;
+  }
+`;
+
+export const AsteriskIcon = styled(CgAsterisk)`
+  cursor: pointer;
+  margin-left: -1rem;
+  transition: ease-in-out 100ms;
+  &:hover {
+    transition: ease-in-out 100ms;
+    transform: scale(1.05);
   }
 `;
